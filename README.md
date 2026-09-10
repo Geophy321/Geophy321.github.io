@@ -24,12 +24,6 @@ Open `index.html` and search for the section you want:
 Overwrite `images/profile.jpg` with a similar-ish aspect ratio image (it's
 cropped into a circle, so a centred headshot works best) — no HTML changes
 needed.
-
-## Attribution
-
-Per the reference project's license, the footer keeps a credit link to
-https://www.craftz.dog/ — please leave it in place if you keep using this design.
-
 ## Deploying on GitHub Pages
 
 Plain HTML/CSS/JS, no build step, no framework. Design based on Takuya
