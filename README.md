@@ -1,88 +1,45 @@
-# Yawar Hussain — personal site
+# Yawar Hussain — personal website
 
-A small Python static-site generator, no framework. Same design as before
-(craftzdog-homepage-inspired), now split into real pages so adding a blog
-post is a one-file change.
+Plain HTML/CSS/JS, no build step, no framework. Design based on Takuya
+Matsuyama's [craftzdog-homepage](https://github.com/craftzdog/craftzdog-homepage)
+(MIT-licensed source) — the 3D voxel-dog mascot is CC BY-NC-ND on that repo
+("you can't reuse it on your website"), so it's not included here; the photo
+and footprint icon replace it.
 
-## Adding a blog post
-
-1. Copy `content/posts/_template.md` to `content/posts/YYYY-MM-DD-your-slug.md`.
-2. Fill in `Title`, `Date`, `Summary`, and write the post body in Markdown below the blank line.
-3. `python build.py` (or just `git push` — see Deploying below).
-
-That's it — no other file changes, no registering the post anywhere. The
-filename becomes the URL (`/blog/your-slug/`), and it's sorted onto the Blog
-page automatically by date.
-
-**Adding pictures to a post:** drop the image into `images/` (e.g.
-`images/my-post-photo.jpg` — anything in there gets published as-is) and
-reference it in the post's Markdown as:
-
-```markdown
-![Caption for the image](../../images/my-post-photo.jpg)
-```
-
-The `../../` is because a post page lives two folders deep
-(`blog/<slug>/index.html`); it's the same for every post, regardless of
-slug. Standard Markdown image syntax, so normal image sizes/formats (jpg,
-png, gif, svg) all work.
-
-## Editing everything else
-
-- `data.py` — your CV content: employment, fieldwork, projects, editorial
-  roles, education, conferences, publications. Plain Python lists/dicts.
-- `theme.py` — colours, fonts, CSS, icons, the page shell (nav/footer). You
-  shouldn't need to touch this for content changes.
-- `build.py` — the page layouts themselves (what goes on Home/Works/Fieldwork/Publications).
-- `images/profile.jpg` — your photo.
-
-## Running it locally
+## Folder structure
 
 ```
-pip install -r requirements.txt
-python build.py
+index.html              the page itself (About / Works / Publications, one file,
+                         JS shows/hides the right section — no page reloads)
+assets/css/main.css     all styling, incl. the light/dark theme toggle
+assets/js/main.js       page behaviour: theme toggle, mobile menu, section routing
+images/profile.jpg      your photo (About section)
 ```
 
-That's it — `dist/index.html` opens directly in a browser (double-click it,
-or `open dist/index.html`), no server needed. Every link and asset in the
-site is a relative path, so it works the same over `file://` as it does once
-deployed. (A local server also works if you prefer one: `python -m
-http.server -d dist 8000`.)
+## Editing content
 
-`build.py` writes everything into `dist/` (git-ignored — it's generated, not
-source).
+Open `index.html` and search for the section you want:
+- `id="page-home"` — About page (intro line, bio timeline, interests, links)
+- `id="page-works"` — Works page (employment, projects, editorial, education, conferences)
+- `id="page-fieldwork"` — Fieldwork page (field deployments, grid of entries)
+- `id="page-blog"` — Blog page (empty state for now — add post cards here later)
+- `id="page-pubs"` — Publications page (grouped, collapsible by topic)
+
+## Swapping the photo
+
+Overwrite `images/profile.jpg` with a similar-ish aspect ratio image (it's
+cropped into a circle, so a centred headshot works best) — no HTML changes
+needed.
+
+## Attribution
+
+Per the reference project's license, the footer keeps a credit link to
+https://www.craftz.dog/ — please leave it in place if you keep using this design.
 
 ## Deploying on GitHub Pages
 
-This repo includes `.github/workflows/deploy.yml`, which builds the site and
-publishes it automatically on every push to `main`. One-time setup:
-
-1. Push this repo to GitHub — either as `<your-username>.github.io` (a user
-   site at the domain root) or as any other repo name (a project site at
-   `<username>.github.io/reponame/`). Both work with no configuration: every
-   link and asset path in the site is relative, not root-absolute, so it
-   doesn't care which path it's served from.
-2. Repo Settings → Pages → **Source: GitHub Actions**.
-3. Push to `main`. The Action builds with `python build.py` and deploys
-   `dist/` — no need to commit generated HTML, and no Ruby/Jekyll involved
-   (there's a `.nojekyll` file in the output so GitHub Pages serves it as-is).
-
-After that, writing a post is: add the Markdown file, commit, push — the
-site rebuilds and redeploys on its own in ~30 seconds.
-
-## On "Jekyll" vs Python options
-
-GitHub Pages' *native*, zero-build option is Jekyll — but Jekyll is Ruby, not
-Python, so it's not what you asked for. If you want a fuller Python blogging
-engine instead of this hand-rolled one, **Pelican** is the closest
-equivalent (Markdown/reST posts, Jinja2 themes, RSS/Atom feeds, tags and
-categories built in, and a documented GitHub Pages deploy path via
-`ghp-import` or the same Actions approach used here). It's more powerful but
-also more machinery — a theme to install or write, a settings file, a
-plugin system — for what's currently a five-page personal site.
-
-This repo goes with the smaller option on purpose: ~250 lines of Python
-total, one dependency (`Markdown`), and the exact design you already have.
-If the blog grows into the main thing on the site and you want tags, feeds,
-or pagination, migrating this content into Pelican later is a straightforward
-step up — the Markdown posts themselves need no changes.
+1. Create a repo named `<your-username>.github.io`.
+2. Push this whole folder's contents to the repo root (so `index.html` sits
+   at the top level, not inside a subfolder).
+3. Settings → Pages → should already serve from `main` / root for this repo
+   name. Wait a minute, then visit `https://<your-username>.github.io`.
