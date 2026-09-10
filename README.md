@@ -1,11 +1,5 @@
 # Yawar Hussain — personal website
 
-Plain HTML/CSS/JS, no build step, no framework. Design based on Takuya
-Matsuyama's [craftzdog-homepage](https://github.com/craftzdog/craftzdog-homepage)
-(MIT-licensed source) — the 3D voxel-dog mascot is CC BY-NC-ND on that repo
-("you can't reuse it on your website"), so it's not included here; the photo
-and footprint icon replace it.
-
 ## Folder structure
 
 ```
@@ -37,6 +31,9 @@ Per the reference project's license, the footer keeps a credit link to
 https://www.craftz.dog/ — please leave it in place if you keep using this design.
 
 ## Deploying on GitHub Pages
+
+Plain HTML/CSS/JS, no build step, no framework. Design based on Takuya
+Matsuyama's [craftzdog-homepage](https://github.com/craftzdog/craftzdog-homepage)
 
 1. Create a repo named `<your-username>.github.io`.
 2. Push this whole folder's contents to the repo root (so `index.html` sits
