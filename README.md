@@ -25,8 +25,7 @@ Overwrite `images/profile.jpg` with a similar-ish aspect ratio image (it's
 cropped into a circle, so a centred headshot works best) — no HTML changes
 needed.
 ## Deploying on GitHub Pages
-
-Plain HTML/CSS/JS, no build step, no framework. Design based on Takuya
+Design based on Takuya
 Matsuyama's [craftzdog-homepage](https://github.com/craftzdog/craftzdog-homepage)
 
 1. Create a repo named `<your-username>.github.io`.
