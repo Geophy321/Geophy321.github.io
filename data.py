@@ -1,13 +1,17 @@
 """CV content used across the site — edit these to update your info.
 (Blog posts are separate: see content/posts/*.md)
 """
-
-BIO_ROWS = [('2009–2011', 'M.Sc. in Geophysics, Quaid-i-Azam University, Islamabad, Pakistan.'), ('2012–2014', 'M.Phil in HydroGeophysics, Quaid-i-Azam University, Islamabad, Pakistan.'), ('2014–2018', 'Ph.D. in Geotechnical Engineering, University of Brasília, Brazil.'), ('2018–2025', 'Postdoctoral research across Brazil, Belgium, Italy and the United States — fibre-optic sensing, seismic monitoring and geohazard characterisation.'), ('2026–present', 'Specialist, Infrastructure Hazard Monitoring, HydroResearch Solutions AB, Stockholm, Sweden.')]
+BIO_ROWS = [
+    ('2026–present', 'Specialist, Infrastructure Hazard Monitoring, Stockholm, Sweden.'),
+    ('2018–2025', 'Postdoctoral research across Brazil, Belgium, Italy and the United States - fibre-optic sensing, seismic monitoring and geohazard assessment.'),
+    ('2014–2018', 'Ph.D. in Geotechnical Engineering, study of rainfall triggered landslides.'),
+    ('2012–2014', 'M.Phil in HydroGeophysics.'),
+    ('2009–2011', 'M.Sc. in Geophysics, Seismic Reflection.'),]
 
 INTERESTS = 'Distributed fibre-optic sensing (DAS/DTS/DSS), near-surface geophysics, ambient-noise seismology, geohazard and dam-safety monitoring, fieldwork, and mentoring early-career researchers.'
 
 EMPLOYMENT = [('Specialist Infrastructure Hazard Monitoring (01/2026 to Present):',
-  'HydroResearch Solutions AB, Stockholm, Sweden. Supporting the expansion of '
+  ' Stockholm, Sweden. Supporting the expansion of '
   'fibre-optic monitoring technologies (DTS, DSS, DAS) through integrated '
   'field measurements, system operation, and data evaluation. Contribute to '
   'acoustic monitoring, quality control, alarm follow-up, and technical '
