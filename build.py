@@ -70,7 +70,7 @@ def home_page(posts):
     <h2 class="page-title">Yawar Hussain</h2>
     <p class="subtitle">Geophysicist ( Fibre-Optic Sensing / Seismology / Geohazards )</p>
   </div>
-  <div class="avatar"><img src="images/profile.jpg" alt="Yawar Hussain" width="100" height="100" /></div>
+  <div class="avatar"><img src="images/IMG_1002.jpeg" alt="Yawar Hussain" width="100" height="100" /></div>
 </div>
 
 <section class="fade" style="--d:0.1s">
