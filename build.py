@@ -158,10 +158,6 @@ def recent_post_teaser(posts):
 
 
 def home_page(posts, news):
-    bio_rows = "\n".join(
-        f'<div class="bio-row">{theme.esc(t)}</div>'
-        for t in data.BIO_ROWS
-    )
     cards = "".join([
         theme.link_card("fieldwork/index.html", theme.TILE_ICONS["pin"], "Fieldwork", "DAS/DTS installs, seismic surveys, geohazard site work"),
         theme.link_card("works/index.html", theme.ICON_PEN, "Editorial Roles", "Handling Editor, Seismica; Associate Editor, IJEEG"),
@@ -188,11 +184,6 @@ def home_page(posts, news):
 </section>
 
 <section>
-  <h3 class="section-title">Bio</h3>
-  {bio_rows}
-</section>
-
-<section>
   <h3 class="section-title">Interests</h3>
   <p class="para">{data.INTERESTS}</p>
 </section>
@@ -200,7 +191,7 @@ def home_page(posts, news):
 <section>
   <h3 class="section-title">On the web</h3>
   <ul class="link-list">
-    <li><a class="ghost-btn" href="mailto:yawar.pgn@gmail.com">{theme.ICON_MAIL} yawar.pgn@gmail.com</a></li>
+    <li><a class="ghost-btn" href="mailto:yawar.pgn@gmail.com">{theme.ICON_MAIL} Contact</a></li>
   </ul>
 
   <div class="grid-auto">{cards}</div>
