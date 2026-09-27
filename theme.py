@@ -37,40 +37,35 @@ NAV_ICONS = {
 }
 
 
-def step_nav_html(active, base):
-    def step(href, label):
-        cls = "step active" if href == active else "step"
-        target = href + "index.html"
-        icon = NAV_ICONS.get(href, "")
-        return f'''<a class="{cls}" href="{base}{target}">
-  <span class="step-circle">{icon}</span>
-  <span class="step-label">{label}</span>
-</a>'''
-    steps = "\n".join(step(h, t) for h, t in NAV_LINKS)
-    return f'<nav class="step-nav">{steps}</nav>'
-
-
 # ------------------------------------------------------------------ nav ----
 def nav_html(active, base):
     def link(href, label):
         cls = "nav-link active" if href == active else "nav-link"
         target = href + "index.html"  # href="" -> "index.html", "works/" -> "works/index.html"
         return f'<a class="{cls}" href="{base}{target}">{label}</a>'
-    links = "\n".join(link(h, t) for h, t in NAV_LINKS)
     mobile = "\n".join(link(h, t) for h, t in NAV_LINKS)
+
+    def circle(href, label):
+        cls = "navbar-step active" if href == active else "navbar-step"
+        target = href + "index.html"
+        icon = NAV_ICONS.get(href, "")
+        return f'''<a class="{cls}" href="{base}{target}">
+  <span class="navbar-step-circle">{icon}</span>
+  <span class="navbar-step-label">{label}</span>
+</a>'''
+    circles = "\n".join(circle(h, t) for h, t in NAV_LINKS)
+
     return f'''
 <nav id="navbar">
   <div class="nav-inner">
     <a class="logo" href="{base}index.html">{ICON_DROP}<span>Yawar Hussain</span></a>
-    <div class="nav-links">
-      {links}
-      <a class="nav-link nav-contact" href="mailto:yawar.pgn@gmail.com">{ICON_MAIL} Contact</a>
-    </div>
     <div class="nav-right">
+      <a class="icon-btn" href="mailto:yawar.pgn@gmail.com" aria-label="Contact">{ICON_MAIL}</a>
       <button id="theme-btn" class="icon-btn" aria-label="Toggle theme"></button>
       <button id="menu-btn" class="icon-btn menu-only" aria-label="Menu">{ICON_MENU}</button>
     </div>
   </div>
+  <div class="navbar-steps">{circles}</div>
   <div id="mobile-menu" hidden>
     {mobile}
     <a class="menu-item" href="mailto:yawar.pgn@gmail.com">Contact</a>
@@ -191,26 +186,34 @@ a:hover{text-decoration:underline}
 .logo:hover{text-decoration:none}
 .logo .footprint{transition:transform .2s ease}
 .logo:hover .footprint{transform:rotate(20deg)}
-.nav-links{display:flex;align-items:center;gap:4px}
-.nav-link{padding:8px;border-radius:6px;color:var(--fg)}
-.nav-link:hover{text-decoration:none;background:var(--card-bg)}
-.nav-link.active{background:var(--accent);color:#20202b}
-.nav-contact{display:inline-flex;align-items:center;gap:5px}
 .nav-right{display:flex;align-items:center;gap:6px}
 .icon-btn{border:none;background:var(--card-bg);color:var(--fg);width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
 .icon-btn:hover{background:var(--btn-bg-hover)}
+a.icon-btn:hover{text-decoration:none}
 .menu-only{display:none}
 #mobile-menu{display:none;flex-direction:column;padding:8px 16px 14px;gap:2px}
 #mobile-menu a{padding:10px 8px;border-radius:6px;color:var(--fg)}
 #mobile-menu a:hover{background:var(--card-bg);text-decoration:none}
+#mobile-menu a.nav-link.active{background:var(--accent);color:#20202b}
+
+.navbar-steps{display:flex;align-items:flex-start;justify-content:center;max-width:768px;margin:0 auto;padding:0 16px 10px}
+.navbar-step{display:flex;flex-direction:column;align-items:center;flex:1;min-width:0;text-decoration:none;color:var(--fg);position:relative}
+.navbar-step:not(:last-child)::after{content:'';position:absolute;top:19px;left:calc(50% + 22px);width:calc(100% - 44px);height:1px;background:var(--card-border)}
+.navbar-step-circle{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card-bg);border:1.5px solid var(--card-border);color:var(--btn-fg);transition:background .15s ease,border-color .15s ease;position:relative;z-index:1}
+.navbar-step-circle svg{width:17px;height:17px}
+.navbar-step-label{margin-top:4px;font-size:10px;font-weight:600;text-align:center;white-space:nowrap}
+.navbar-step:hover .navbar-step-circle,.navbar-step.active .navbar-step-circle{background:var(--accent);border-color:var(--accent)}
+.navbar-step.active .navbar-step-circle{color:#20202b}
+.navbar-step:hover{text-decoration:none}
 
 @media (max-width:680px){
-  .nav-links{display:none}
+  .navbar-steps{display:none}
   .menu-only{display:inline-flex}
   #mobile-menu:not([hidden]){display:flex}
+  main.container{padding-top:60px}
 }
 
-main.container{padding-top:70px;padding-bottom:48px}
+main.container{padding-top:122px;padding-bottom:48px}
 
 .intro-box{border-radius:12px;margin-bottom:24px;padding:12px;text-align:center;background:var(--card-bg);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--card-border)}
 .hero-row{display:flex;align-items:center;gap:24px;margin-bottom:24px;flex-wrap:wrap}
@@ -224,15 +227,6 @@ main.container{padding-top:70px;padding-bottom:48px}
 .news-banner-tag{background:var(--accent);color:#20202b;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 9px;border-radius:999px;flex-shrink:0}
 .news-banner-title{font-weight:600}
 .news-banner-date{color:var(--fg-soft);font-size:13px;margin-left:auto}
-
-.step-nav{display:flex;align-items:flex-start;justify-content:center;gap:0;margin:4px 0 28px;flex-wrap:wrap}
-.step{display:flex;flex-direction:column;align-items:center;flex:1;min-width:70px;text-decoration:none;color:var(--fg);position:relative;padding:0 4px}
-.step:not(:last-child)::after{content:'';position:absolute;top:28px;left:calc(50% + 32px);width:calc(100% - 64px);height:1px;background:var(--card-border)}
-.step-circle{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card-bg);border:1.5px solid var(--card-border);color:var(--btn-fg);transition:background .15s ease,border-color .15s ease,transform .15s ease;position:relative;z-index:1}
-.step-label{margin-top:8px;font-size:12px;font-weight:600;text-align:center;line-height:1.25;max-width:80px}
-.step:hover .step-circle,.step.active .step-circle{background:var(--accent);border-color:var(--accent);color:#20202b;transform:translateY(-2px)}
-.step:hover{text-decoration:none}
-@media (max-width:560px){.step-label{display:none}.step:not(:last-child)::after{top:22px}.step-circle{width:44px;height:44px}.step-circle svg{width:18px;height:18px}}
 
 .fade{margin-bottom:24px;animation:fadeIn .6s ease both;animation-delay:var(--d,0s)}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
