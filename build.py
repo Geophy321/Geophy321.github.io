@@ -10,6 +10,7 @@ content/posts/YYYY-MM-DD-my-post.md, fill it in, run `python build.py` again
 (or just push — the GitHub Actions workflow does this for you, see README).
 No other file needs to change; the post appears on the Blog page automatically.
 """
+import re
 import shutil
 from pathlib import Path
 import markdown
@@ -21,6 +22,13 @@ ROOT = Path(__file__).parent
 OUT = ROOT / "dist"
 POSTS_DIR = ROOT / "content/posts"
 NEWS_DIR = ROOT / "content/news"
+
+
+def reading_time(body_html):
+    text = re.sub(r"<[^>]+>", " ", body_html)
+    words = len(text.split())
+    minutes = max(1, round(words / 200))
+    return f"{minutes} min read"
 
 
 def load_posts():
@@ -36,8 +44,10 @@ def load_posts():
             "title": meta.get("title", [f.stem])[0],
             "date": meta.get("date", [""])[0],
             "summary": meta.get("summary", [""])[0],
+            "cover": meta.get("cover", [""])[0],
             "body_html": body_html,
         })
+        posts[-1]["reading_time"] = reading_time(body_html)
     posts.sort(key=lambda p: p["date"], reverse=True)
     return posts
 
@@ -56,10 +66,27 @@ def load_news():
                 "title": meta.get("title", [f.stem])[0],
                 "date": meta.get("date", [""])[0],
                 "summary": meta.get("summary", [""])[0],
+                "cover": meta.get("cover", [""])[0],
                 "body_html": body_html,
             })
+            news[-1]["reading_time"] = reading_time(body_html)
     news.sort(key=lambda n: n["date"], reverse=True)
     return news
+
+
+def post_card(item, cover_prefix, href):
+    if item["cover"]:
+        thumb = f'<div class="post-card-cover" style="background-image:url(\'{cover_prefix}{item["cover"]}\')"></div>'
+    else:
+        thumb = f'<div class="post-card-cover post-card-cover-empty">{theme.ICON_PEN}</div>'
+    return f'''<a class="post-card" href="{href}">
+  {thumb}
+  <div class="post-card-body">
+    <div class="post-date">{theme.esc(item["date"])} &middot; {theme.esc(item["reading_time"])}</div>
+    <div class="post-title">{theme.esc(item["title"])}</div>
+    <div class="post-summary">{theme.esc(item["summary"])}</div>
+  </div>
+</a>'''
 
 
 def recent_news_banner(news):
@@ -81,11 +108,8 @@ def news_index_page(news):
   will show up here.</p>
 </div>'''
     else:
-        body = "".join(f'''<div class="post-list-item">
-  <div class="post-date">{theme.esc(n["date"])}</div>
-  <div class="post-title"><a href="{n["slug"]}/index.html">{theme.esc(n["title"])}</a></div>
-  <div class="post-summary">{theme.esc(n["summary"])}</div>
-</div>''' for n in news)
+        cards = "".join(post_card(n, "../", f'{n["slug"]}/index.html') for n in news)
+        body = f'<div class="grid-auto post-grid">{cards}</div>'
     return f'''
 <h3 class="page-heading">News</h3>
 {body}
@@ -93,10 +117,12 @@ def news_index_page(news):
 
 
 def news_item_page(n):
+    cover_html = f'<img class="post-cover" src="../../{n["cover"]}" alt="" />' if n["cover"] else ""
     return f'''
 <article>
+  {cover_html}
   <h3 class="page-heading">{theme.esc(n["title"])}</h3>
-  <p class="post-date">{theme.esc(n["date"])}</p>
+  <p class="post-date">{theme.esc(n["date"])} &middot; {theme.esc(n["reading_time"])}</p>
   <div class="post-body">{n["body_html"]}</div>
   <p><a href="../index.html">&larr; Back to News</a></p>
 </article>
@@ -107,11 +133,7 @@ def recent_post_teaser(posts):
     if not posts:
         return ""
     p = posts[0]
-    return f'''<div class="grid-card" style="text-align:left;margin-bottom:20px">
-  <div class="post-date">{theme.esc(p["date"])}</div>
-  <div class="post-title"><a href="blog/{p["slug"]}/index.html">{theme.esc(p["title"])}</a></div>
-  <div class="post-summary">{theme.esc(p["summary"])}</div>
-</div>'''
+    return post_card(p, "", f'blog/{p["slug"]}/index.html')
 
 
 def home_page(posts, news):
@@ -136,6 +158,8 @@ def home_page(posts, news):
 </div>
 
 {recent_news_banner(news)}
+
+{theme.step_nav_html("", "")}
 
 <section class="fade" style="--d:0.1s">
   <h3 class="section-title">Work</h3>
@@ -240,12 +264,8 @@ def blog_index_page(posts):
   <div class="center-cta"><a class="btn" href="mailto:yawar.pgn@gmail.com">{theme.ICON_MAIL} Notify me</a></div>
 </div>'''
     else:
-        items = "".join(f'''<div class="post-list-item">
-  <div class="post-date">{theme.esc(p["date"])}</div>
-  <div class="post-title"><a href="{p["slug"]}/index.html">{theme.esc(p["title"])}</a></div>
-  <div class="post-summary">{theme.esc(p["summary"])}</div>
-</div>''' for p in posts)
-        body = items
+        cards = "".join(post_card(p, "../", f'{p["slug"]}/index.html') for p in posts)
+        body = f'<div class="grid-auto post-grid">{cards}</div>'
     return f'''
 <h3 class="page-heading">Blog</h3>
 {body}
@@ -253,10 +273,12 @@ def blog_index_page(posts):
 
 
 def post_page(p):
+    cover_html = f'<img class="post-cover" src="../../{p["cover"]}" alt="" />' if p["cover"] else ""
     return f'''
 <article>
+  {cover_html}
   <h3 class="page-heading">{theme.esc(p["title"])}</h3>
-  <p class="post-date">{theme.esc(p["date"])}</p>
+  <p class="post-date">{theme.esc(p["date"])} &middot; {theme.esc(p["reading_time"])}</p>
   <div class="post-body">{p["body_html"]}</div>
   <p><a href="../index.html">&larr; Back to Blog</a></p>
 </article>

@@ -1,8 +1,13 @@
 Title: Your Post Title Here
 Date: 2026-01-01
 Summary: One or two sentences — this shows on the Blog list page and the homepage teaser.
+Cover: images/your-cover-image.jpg
 
 Write the body of your post here using normal Markdown.
+
+`Cover` is optional — delete that line if you don't have a photo for this
+post. When set, it shows as a thumbnail on the Blog list and as a banner
+image at the top of the post. Drop the image file in `images/` first.
 
 ## Headings work
 

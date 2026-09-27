@@ -1,5 +1,5 @@
-dist/
-__pycache__/
 *.pyc
-.DS_Store
 *Zone.Identifier
+.DS_Store
+__pycache__/
+dist/

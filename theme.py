@@ -27,6 +27,28 @@ TILE_ICONS = {
 NAV_LINKS = [("", "About"), ("news/", "News"), ("works/", "Works"), ("fieldwork/", "Fieldwork"),
              ("blog/", "Blog"), ("publications/", "Publications")]
 
+NAV_ICONS = {
+    "": '<svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2c-4.4 0-8 2.2-8 5v2h16v-2c0-2.8-3.6-5-8-5Z"/></svg>',
+    "news/": '<svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2ZM7 9h10v2H7V9Zm0 4h6v2H7v-2Z"/></svg>',
+    "works/": TILE_ICONS["briefcase"],
+    "fieldwork/": TILE_ICONS["pin"],
+    "blog/": ICON_PEN,
+    "publications/": ICON_DOC,
+}
+
+
+def step_nav_html(active, base):
+    def step(href, label):
+        cls = "step active" if href == active else "step"
+        target = href + "index.html"
+        icon = NAV_ICONS.get(href, "")
+        return f'''<a class="{cls}" href="{base}{target}">
+  <span class="step-circle">{icon}</span>
+  <span class="step-label">{label}</span>
+</a>'''
+    steps = "\n".join(step(h, t) for h, t in NAV_LINKS)
+    return f'<nav class="step-nav">{steps}</nav>'
+
 
 # ------------------------------------------------------------------ nav ----
 def nav_html(active, base):
@@ -203,6 +225,15 @@ main.container{padding-top:70px;padding-bottom:48px}
 .news-banner-title{font-weight:600}
 .news-banner-date{color:var(--fg-soft);font-size:13px;margin-left:auto}
 
+.step-nav{display:flex;align-items:flex-start;justify-content:center;gap:0;margin:4px 0 28px;flex-wrap:wrap}
+.step{display:flex;flex-direction:column;align-items:center;flex:1;min-width:70px;text-decoration:none;color:var(--fg);position:relative;padding:0 4px}
+.step:not(:last-child)::after{content:'';position:absolute;top:28px;left:calc(50% + 32px);width:calc(100% - 64px);height:1px;background:var(--card-border)}
+.step-circle{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card-bg);border:1.5px solid var(--card-border);color:var(--btn-fg);transition:background .15s ease,border-color .15s ease,transform .15s ease;position:relative;z-index:1}
+.step-label{margin-top:8px;font-size:12px;font-weight:600;text-align:center;line-height:1.25;max-width:80px}
+.step:hover .step-circle,.step.active .step-circle{background:var(--accent);border-color:var(--accent);color:#20202b;transform:translateY(-2px)}
+.step:hover{text-decoration:none}
+@media (max-width:560px){.step-label{display:none}.step:not(:last-child)::after{top:22px}.step-circle{width:44px;height:44px}.step-circle svg{width:18px;height:18px}}
+
 .fade{margin-bottom:24px;animation:fadeIn .6s ease both;animation-delay:var(--d,0s)}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
@@ -254,15 +285,29 @@ a.grid-card:hover{text-decoration:none;background:var(--btn-bg-hover)}
 .post-title{font-size:19px;margin:2px 0 4px}
 .post-summary{color:var(--fg-soft)}
 
+.post-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-bottom:0}
+.post-card{display:flex;flex-direction:column;background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;overflow:hidden;color:var(--fg);text-align:left;transition:background .15s}
+a.post-card:hover{text-decoration:none;background:var(--btn-bg-hover)}
+.post-card-cover{height:140px;background-size:cover;background-position:center}
+.post-card-cover-empty{display:flex;align-items:center;justify-content:center;color:var(--btn-fg);background:var(--btn-bg)}
+.post-card-body{padding:14px 16px}
+.post-card .post-title{font-size:17px;margin:4px 0 6px}
+.post-cover{display:block;width:100%;max-height:320px;object-fit:cover;border-radius:12px;margin-bottom:16px}
+
 .post-body{line-height:1.7}
 .post-body h1,.post-body h2,.post-body h3{margin:1.4em 0 .5em}
 .post-body p{margin:0 0 1em}
+.post-body a{text-decoration:underline;text-decoration-color:var(--card-border);text-underline-offset:2px}
 .post-body img{max-width:100%;border-radius:8px}
 .post-body pre{background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;padding:12px;overflow-x:auto}
 .post-body code{background:var(--card-bg);border-radius:4px;padding:.1em .35em;font-size:.9em}
 .post-body pre code{background:none;padding:0}
-.post-body blockquote{border-left:3px solid var(--card-border);margin:0 0 1em;padding:.2em 1em;color:var(--fg-soft)}
+.post-body blockquote{border-left:3px solid var(--accent);margin:0 0 1em;padding:.2em 1em;color:var(--fg-soft);font-style:italic}
 .post-body ul,.post-body ol{padding-left:1.4em;margin:0 0 1em}
+.post-body hr{border:none;border-top:1px solid var(--card-border);margin:2em 0}
+.post-body table{border-collapse:collapse;width:100%;margin:0 0 1.4em;font-size:15px}
+.post-body th,.post-body td{border:1px solid var(--card-border);padding:8px 10px;text-align:left}
+.post-body th{background:var(--card-bg);font-weight:700}
 
 footer{max-width:768px;margin:32px auto 0;padding:0 16px;text-align:center;opacity:.55;font-size:13px;line-height:1.6}
 '''
