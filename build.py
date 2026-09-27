@@ -74,13 +74,22 @@ def load_news():
     return news
 
 
-def post_card(item, cover_prefix, href, index=0):
+def post_card(item, cover_prefix, href, index=0, animate=False):
     if item["cover"]:
         thumb = f'<div class="post-card-cover" style="background-image:url(\'{cover_prefix}{item["cover"]}\')"></div>'
     else:
         thumb = f'<div class="post-card-cover post-card-cover-empty">{theme.ICON_PEN}</div>'
-    delay = min(index * 0.08, 0.5)
-    return f'''<a class="post-card fade" style="--d:{delay:.2f}s" href="{href}">
+    cls = "post-card"
+    style = ""
+    if animate:
+        # Cycle through 4 entry directions so consecutive articles feel varied:
+        # left, right, top, bottom.
+        directions = [(-40, 0), (40, 0), (0, -30), (0, 30)]
+        fx, fy = directions[index % 4]
+        delay = min(index * 0.25, 1.5)
+        cls += " news-fly"
+        style = f' style="--d:{delay:.2f}s;--fx:{fx}px;--fy:{fy}px"'
+    return f'''<a class="{cls}"{style} href="{href}">
   {thumb}
   <div class="post-card-body">
     <div class="post-date">{theme.esc(item["date"])} &middot; {theme.esc(item["reading_time"])}</div>
@@ -109,7 +118,7 @@ def news_index_page(news):
   will show up here.</p>
 </div>'''
     else:
-        cards = "".join(post_card(n, "../", f'{n["slug"]}/index.html', i) for i, n in enumerate(news))
+        cards = "".join(post_card(n, "../", f'{n["slug"]}/index.html', i, animate=True) for i, n in enumerate(news))
         body = f'<div class="grid-auto post-grid">{cards}</div>'
     return f'''
 <h3 class="page-heading">News</h3>
@@ -160,7 +169,7 @@ def home_page(posts, news):
 
 {recent_news_banner(news)}
 
-<section class="fade" style="--d:0.1s">
+<section>
   <h3 class="section-title">Work</h3>
   <p class="para">Yawar is a geophysicist based in Stockholm with a background spanning near-surface
   geophysics, seismic monitoring and geohazard characterisation, built over postdoctoral appointments in
@@ -171,17 +180,17 @@ def home_page(posts, news):
   <div class="center-cta"><a class="btn" href="files/cv.pdf" target="_blank" rel="noopener">CV {theme.ICON_CHEVRON}</a></div>
 </section>
 
-<section class="fade" style="--d:0.2s">
+<section>
   <h3 class="section-title">Bio</h3>
   {bio_rows}
 </section>
 
-<section class="fade" style="--d:0.3s">
+<section>
   <h3 class="section-title">Interests</h3>
   <p class="para">{data.INTERESTS}</p>
 </section>
 
-<section class="fade" style="--d:0.3s">
+<section>
   <h3 class="section-title">On the web</h3>
   <ul class="link-list">
     <li><a class="ghost-btn" href="mailto:yawar.pgn@gmail.com">{theme.ICON_MAIL} yawar.pgn@gmail.com</a></li>

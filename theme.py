@@ -223,8 +223,10 @@ main.container{padding-top:70px;padding-bottom:48px}
 .news-banner-title{font-weight:600}
 .news-banner-date{color:var(--fg-soft);font-size:13px;margin-left:auto}
 
-.fade{margin-bottom:24px;opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease;transition-delay:var(--d,0s)}
-.fade.visible{opacity:1;transform:translateY(0)}
+/* Sequential fly-in used ONLY on the News list page — each article appears
+   one after another as the page loads, from an alternating direction. */
+.news-fly{opacity:0;animation:newsFlyIn .6s ease forwards;animation-delay:var(--d,0s)}
+@keyframes newsFlyIn{from{opacity:0;transform:translate(var(--fx,0),var(--fy,0))}to{opacity:1;transform:translate(0,0)}}
 
 .section-title{text-decoration:underline;font-size:20px;text-underline-offset:6px;text-decoration-color:var(--underline);text-decoration-thickness:4px;margin-top:12px;margin-bottom:16px}
 .page-heading{font-size:22px;margin-bottom:16px}
@@ -275,8 +277,8 @@ a.grid-card:hover{text-decoration:none;background:var(--btn-bg-hover)}
 .post-summary{color:var(--fg-soft)}
 
 .post-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-bottom:0}
-.post-card{display:flex;flex-direction:column;background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;overflow:hidden;color:var(--fg);text-align:left;transition:background .15s ease,transform .2s ease,box-shadow .2s ease}
-a.post-card:hover{text-decoration:none;background:var(--btn-bg-hover);transform:translateY(-4px);box-shadow:0 10px 24px rgba(0,0,0,.1)}
+.post-card{display:flex;flex-direction:column;background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;overflow:hidden;color:var(--fg);text-align:left;transition:background .15s ease}
+a.post-card:hover{text-decoration:none;background:var(--btn-bg-hover)}
 .post-card-cover{height:140px;background-size:cover;background-position:center}
 .post-card-cover-empty{display:flex;align-items:center;justify-content:center;color:var(--btn-fg);background:var(--btn-bg)}
 .post-card-body{padding:14px 16px}
@@ -332,22 +334,6 @@ SCRIPT = '''
   var menuBtn = document.getElementById('menu-btn');
   var mobileMenu = document.getElementById('mobile-menu');
   menuBtn.addEventListener('click', function(){ mobileMenu.hidden = !mobileMenu.hidden; });
-
-  // Reveal .fade elements as they scroll into view, rather than all at once on load.
-  var faders = document.querySelectorAll('.fade');
-  if ('IntersectionObserver' in window && faders.length){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if (entry.isIntersecting){
-          entry.target.classList.add('visible');
-          io.unobserve(entry.target);
-        }
-      });
-    }, {threshold: 0.15, rootMargin: '0px 0px -40px 0px'});
-    faders.forEach(function(el){ io.observe(el); });
-  } else {
-    faders.forEach(function(el){ el.classList.add('visible'); });
-  }
 })();
 '''
 SCRIPT = SCRIPT.replace('__ICON_MOON__', ICON_MOON.replace("'", "\\'")).replace('__ICON_SUN__', ICON_SUN.replace("'", "\\'"))
