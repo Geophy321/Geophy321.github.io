@@ -2,8 +2,9 @@
 (Blog posts are separate: see content/posts/*.md)
 """
 BIO_ROWS = [
-    ('2026–present', 'Specialist, Infrastructure Hazard Monitoring, Stockholm, Sweden.'),
-    ('Postdoctoral research across Brazil, Belgium, Italy and the United States.'),]
+    'Specialist, Infrastructure Hazard Monitoring, Stockholm, Sweden.',
+    'Postdoctoral research across Brazil, Belgium, Italy and the United States.',
+]
 
 INTERESTS = 'Distributed fibre-optic sensing (DAS/DTS/DSS), near-surface geophysics, ambient-noise seismology, geohazard and dam-safety monitoring, fieldwork, and mentoring early-career researchers.'
 
@@ -90,13 +91,12 @@ EDITORIAL = [('Handling Editor', 'Seismica', None),
  ('Young Editorial Board Member', 'Natural Hazards Research; Discover Hazards', None),
  ('Reviewer', 'Geoscience Communication', None)]
 
-EDUCATION = [('2014–2018',
-  'Ph.D., Geotechnical Engineering',
+EDUCATION = [('Ph.D., Geotechnical Engineering',
   'University of Brasilia, Brazil'),
-  'M.Phil, HydroGeophysics',
+ ('M.Phil, HydroGeophysics',
   'Quaid-i-Azam University, Islamabad, Pakistan'),
-  'M.Sc., Geophysics',
-  'Quaid-i-Azam University, Islamabad, Pakistan',)]
+ ('M.Sc., Geophysics',
+  'Quaid-i-Azam University, Islamabad, Pakistan')]
 
 CONFERENCES = ['Human-Induced Seismicity Front in Texas and Risk Preparedness, 2025 NSF '
  'GAGE/SAGE Community Science Workshop, USA (poster).',

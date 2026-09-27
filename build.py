@@ -159,8 +159,8 @@ def recent_post_teaser(posts):
 
 def home_page(posts, news):
     bio_rows = "\n".join(
-        f'<div class="bio-row"><span class="bio-year">{theme.esc(y)}</span>{theme.esc(t)}</div>'
-        for y, t in data.BIO_ROWS
+        f'<div class="bio-row">{theme.esc(t)}</div>'
+        for t in data.BIO_ROWS
     )
     cards = "".join([
         theme.link_card("fieldwork/index.html", theme.TILE_ICONS["pin"], "Fieldwork", "DAS/DTS installs, seismic surveys, geohazard site work"),
@@ -229,8 +229,8 @@ def works_page():
         return f'<li><b>{theme.esc(role)}</b> — {org_html}</li>'
     editorial_items = "".join(editorial_line(role, org, url) for role, org, url in data.EDITORIAL)
     education_items = "".join(
-        f'<li><span class="bio-year">{theme.esc(y)}</span>{theme.esc(deg)} — {theme.esc(place)}</li>'
-        for y, deg, place in data.EDUCATION
+        f'<li>{theme.esc(deg)} — {theme.esc(place)}</li>'
+        for deg, place in data.EDUCATION
     )
     conferences_items = "".join(f'<li>{theme.esc(c)}</li>' for c in data.CONFERENCES)
     return f'''
