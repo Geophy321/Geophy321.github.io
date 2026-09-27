@@ -3,8 +3,8 @@
 """
 BIO_ROWS = [
     ('2026–present', 'Specialist, Infrastructure Hazard Monitoring, Stockholm, Sweden.'),
-    ('2018–2025', 'Postdoctoral research across Brazil, Belgium, Italy and the United States - fibre-optic sensing, seismic monitoring and geohazard assessment.'),
-    ('2014–2018', 'Ph.D. in Geotechnical Engineering, study of rainfall triggered landslides.'),
+    ('2018–2025', 'Postdoctoral research across Brazil, Belgium, Italy and the United States.'),
+    ('2014–2018', 'Ph.D. in Geotechnical Engineering.'),
     ('2012–2014', 'M.Phil in HydroGeophysics.'),
     ('2009–2011', 'M.Sc. in Geophysics, Seismic Reflection.'),]
 
@@ -13,10 +13,7 @@ INTERESTS = 'Distributed fibre-optic sensing (DAS/DTS/DSS), near-surface geophys
 EMPLOYMENT = [('Specialist Infrastructure Hazard Monitoring (01/2026 to Present):',
   ' Stockholm, Sweden. Supporting the expansion of '
   'fibre-optic monitoring technologies (DTS, DSS, DAS) through integrated '
-  'field measurements, system operation, and data evaluation. Contribute to '
-  'acoustic monitoring, quality control, alarm follow-up, and technical '
-  'reporting, ensuring end-to-end dam monitoring from measurement to '
-  'interpretation.'),
+  'field measurements, system operation, and data evaluation.'),
  ('Research Associate (11/2024 to 06/2025),',
   'Department of Sustainable Earth Systems Sciences, University of Texas at '
   'Dallas, USA. Engaged in near-surface geophysics and modeling to study the '
@@ -47,7 +44,7 @@ EMPLOYMENT = [('Specialist Infrastructure Hazard Monitoring (01/2026 to Present)
   'Brasilia, Brazil. Geophysical (GPR and ERT) and geotechnical '
   'characterization of subsurface caves for geohazard assessment.')]
 
-FIELDWORK = ['Field DAS installation at the LKAB mine, Kiruna, Sweden.',
+FIELDWORK = ['Field DAS installation at the X mine, Sweden.',
  'Field DTS installation at the Boliden and Kiruna mine sites, Sweden.',
  'Working with SmartSolo nodes used in active seismic refraction and passive '
  'seismic.',
@@ -86,17 +83,15 @@ PROJECTS = [('flask',
   'ICMBio and Vale S.A. postdoctoral grant',
   'Applied geophysics for karst vulnerability assessment.')]
 
-EDITORIAL = [('Handling Editor', 'Seismica', None),
+EDITORIAL = [('Handling Editor', 'Seismica'),
  ('Associate Editor',
   'International Journal of Economic and Environmental Geology (IJEEG), '
-  '2026–present', None),
- ('Topic Editor', 'Discover Geosciences, Springer',
-  'https://link.springer.com/collections/hjcgghjdga'),
- ('Topic Editor', 'Frontiers in Earth Science',
-  'https://www.frontiersin.org/research-topics/54828/near-surface-geophysics-in-latin-american-contexts-its-applications-education-and-societal-perspectives-as-a-whole/magazine'),
- ('Review Editor', 'Geohazards and Georisk, Frontiers in Earth Science', None),
- ('Young Editorial Board Member', 'Natural Hazards Research; Discover Hazards', None),
- ('Reviewer', 'Geoscience Communication', None)]
+  '2026–present'),
+ ('Topic Editor', 'Discover Geosciences, Springer'),
+ ('Topic Editor', 'Frontiers in Earth Science'),
+ ('Review Editor', 'Geohazards and Georisk, Frontiers in Earth Science'),
+ ('Young Editorial Board Member', 'Natural Hazards Research; Discover Hazards'),
+ ('Reviewer', 'Geoscience Communication')]
 
 EDUCATION = [('2014–2018',
   'Ph.D., Geotechnical Engineering',
