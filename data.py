@@ -90,8 +90,7 @@ EDITORIAL = [('Handling Editor', 'Seismica', None),
  ('Young Editorial Board Member', 'Natural Hazards Research; Discover Hazards', None),
  ('Reviewer', 'Geoscience Communication', None)]
 
-EDUCATION = [('2014–2018',
-  'Ph.D., Geotechnical Engineering',
+EDUCATION = [('Ph.D., Geotechnical Engineering',
   'University of Brasilia, Brazil'),
   'M.Phil, HydroGeophysics',
   'Quaid-i-Azam University, Islamabad, Pakistan'),
