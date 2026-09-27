@@ -74,12 +74,13 @@ def load_news():
     return news
 
 
-def post_card(item, cover_prefix, href):
+def post_card(item, cover_prefix, href, index=0):
     if item["cover"]:
         thumb = f'<div class="post-card-cover" style="background-image:url(\'{cover_prefix}{item["cover"]}\')"></div>'
     else:
         thumb = f'<div class="post-card-cover post-card-cover-empty">{theme.ICON_PEN}</div>'
-    return f'''<a class="post-card" href="{href}">
+    delay = min(index * 0.08, 0.5)
+    return f'''<a class="post-card fade" style="--d:{delay:.2f}s" href="{href}">
   {thumb}
   <div class="post-card-body">
     <div class="post-date">{theme.esc(item["date"])} &middot; {theme.esc(item["reading_time"])}</div>
@@ -108,7 +109,7 @@ def news_index_page(news):
   will show up here.</p>
 </div>'''
     else:
-        cards = "".join(post_card(n, "../", f'{n["slug"]}/index.html') for n in news)
+        cards = "".join(post_card(n, "../", f'{n["slug"]}/index.html', i) for i, n in enumerate(news))
         body = f'<div class="grid-auto post-grid">{cards}</div>'
     return f'''
 <h3 class="page-heading">News</h3>
@@ -167,7 +168,7 @@ def home_page(posts, news):
   Monitoring at HydroResearch Solutions AB, supporting fibre-optic monitoring (DTS, DSS, DAS) of dams and
   embankments from field deployment through to interpretation. Over 35 peer-reviewed publications, an
   H-index of 19 and 1284 citations (Scopus).</p>
-  <div class="center-cta"><a class="btn" href="publications/index.html">My publications {theme.ICON_CHEVRON}</a></div>
+  <div class="center-cta"><a class="btn" href="files/cv.pdf" target="_blank" rel="noopener">CV {theme.ICON_CHEVRON}</a></div>
 </section>
 
 <section class="fade" style="--d:0.2s">
@@ -262,7 +263,7 @@ def blog_index_page(posts):
   <div class="center-cta"><a class="btn" href="mailto:yawar.pgn@gmail.com">{theme.ICON_MAIL} Notify me</a></div>
 </div>'''
     else:
-        cards = "".join(post_card(p, "../", f'{p["slug"]}/index.html') for p in posts)
+        cards = "".join(post_card(p, "../", f'{p["slug"]}/index.html', i) for i, p in enumerate(posts))
         body = f'<div class="grid-auto post-grid">{cards}</div>'
     return f'''
 <h3 class="page-heading">Blog</h3>
@@ -297,6 +298,8 @@ def build():
     (OUT / "assets/css/main.css").write_text(theme.CSS)
     (OUT / "assets/js/main.js").write_text(theme.SCRIPT)
     shutil.copytree(ROOT / "images", OUT / "images")  # profile photo + any blog-post images
+    if (ROOT / "files").exists():
+        shutil.copytree(ROOT / "files", OUT / "files")  # CV and other downloadable documents
     (OUT / ".nojekyll").write_text("")  # tell GitHub Pages this isn't a Jekyll site
 
     posts = load_posts()
