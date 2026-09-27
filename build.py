@@ -159,6 +159,8 @@ def home_page(posts, news):
 
 {recent_news_banner(news)}
 
+{theme.step_nav_html("", "")}
+
 <section class="fade" style="--d:0.1s">
   <h3 class="section-title">Work</h3>
   <p class="para">Yawar is a geophysicist based in Stockholm with a background spanning near-surface
