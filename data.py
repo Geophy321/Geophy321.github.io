@@ -3,20 +3,14 @@
 """
 BIO_ROWS = [
     ('2026–present', 'Specialist, Infrastructure Hazard Monitoring, Stockholm, Sweden.'),
-    ('2018–2025', 'Postdoctoral research across Brazil, Belgium, Italy and the United States.'),
-    ('2014–2018', 'Ph.D. in Geotechnical Engineering.'),
-    ('2012–2014', 'M.Phil in HydroGeophysics.'),
-    ('2009–2011', 'M.Sc. in Geophysics, Seismic Reflection.'),]
+    ('Postdoctoral research across Brazil, Belgium, Italy and the United States.'),]
 
 INTERESTS = 'Distributed fibre-optic sensing (DAS/DTS/DSS), near-surface geophysics, ambient-noise seismology, geohazard and dam-safety monitoring, fieldwork, and mentoring early-career researchers.'
 
 EMPLOYMENT = [('Specialist Infrastructure Hazard Monitoring (01/2026 to Present):',
   ' Stockholm, Sweden. Supporting the expansion of '
   'fibre-optic monitoring technologies (DTS, DSS, DAS) through integrated '
-  'field measurements, system operation, and data evaluation. Contribute to '
-  'acoustic monitoring, quality control, alarm follow-up, and technical '
-  'reporting, ensuring end-to-end dam monitoring from measurement to '
-  'interpretation.'),
+  'field measurements, system operation, and data evaluation.'),
  ('Research Associate (11/2024 to 06/2025),',
   'Department of Sustainable Earth Systems Sciences, University of Texas at '
   'Dallas, USA. Engaged in near-surface geophysics and modeling to study the '
@@ -47,20 +41,18 @@ EMPLOYMENT = [('Specialist Infrastructure Hazard Monitoring (01/2026 to Present)
   'Brasilia, Brazil. Geophysical (GPR and ERT) and geotechnical '
   'characterization of subsurface caves for geohazard assessment.')]
 
-FIELDWORK = ['Field DAS installation at the LKAB mine, Kiruna, Sweden.',
- 'Field DTS installation at the Boliden and Kiruna mine sites, Sweden.',
+FIELDWORK = ['Field DAS installation at the Y1 mine, Sweden.',
+ 'Field DTS installation at the Boliden mining sites, Sweden.',
  'Working with SmartSolo nodes used in active seismic refraction and passive '
  'seismic.',
  'Installation and maintenance of Q330 Kinemetrics sensor at ACUTO Field Lab.',
  'PulseEKKO GPR series from Sensor & Software and GSSI.',
  'Geophysical data acquisition at the San Andres landslide in El Hierro, '
- 'Spain.',
- 'Study of Sobradinho landslides using dense arrangement of seismometers, ERT, '
- 'MASW, GPR and soil sampling.']
+ 'Spain.']
 
 PROJECTS = [('flask',
   'Hanging Wall Monitoring by DAS',
-  'LKAB mine, Kiruna, Sweden. DAS survey for hanging-wall stability '
+  'DAS survey for hanging-wall stability '
   'monitoring, combining passive ambient-noise interferometry (dv/v, '
   'resonance-frequency tracking) with active-source MASW dispersion analysis '
   'for shear-wave velocity characterisation.'),
@@ -101,13 +93,10 @@ EDITORIAL = [('Handling Editor', 'Seismica', None),
 EDUCATION = [('2014–2018',
   'Ph.D., Geotechnical Engineering',
   'University of Brasilia, Brazil'),
- ('2012–2014',
   'M.Phil, HydroGeophysics',
   'Quaid-i-Azam University, Islamabad, Pakistan'),
- ('2009–2011',
   'M.Sc., Geophysics',
-  'Quaid-i-Azam University, Islamabad, Pakistan'),
- ('2007–2009', 'B.Sc.', 'University of the Punjab, Lahore, Pakistan')]
+  'Quaid-i-Azam University, Islamabad, Pakistan',)]
 
 CONFERENCES = ['Human-Induced Seismicity Front in Texas and Risk Preparedness, 2025 NSF '
  'GAGE/SAGE Community Science Workshop, USA (poster).',
