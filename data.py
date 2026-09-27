@@ -86,15 +86,17 @@ PROJECTS = [('flask',
   'ICMBio and Vale S.A. postdoctoral grant',
   'Applied geophysics for karst vulnerability assessment.')]
 
-EDITORIAL = [('Handling Editor', 'Seismica'),
+EDITORIAL = [('Handling Editor', 'Seismica', None),
  ('Associate Editor',
   'International Journal of Economic and Environmental Geology (IJEEG), '
-  '2026–present'),
- ('Topic Editor', 'Discover Geosciences, Springer'),
- ('Topic Editor', 'Frontiers in Earth Science'),
- ('Review Editor', 'Geohazards and Georisk, Frontiers in Earth Science'),
- ('Young Editorial Board Member', 'Natural Hazards Research; Discover Hazards'),
- ('Reviewer', 'Geoscience Communication')]
+  '2026–present', None),
+ ('Topic Editor', 'Discover Geosciences, Springer',
+  'https://link.springer.com/collections/hjcgghjdga'),
+ ('Topic Editor', 'Frontiers in Earth Science',
+  'https://www.frontiersin.org/research-topics/54828/near-surface-geophysics-in-latin-american-contexts-its-applications-education-and-societal-perspectives-as-a-whole/magazine'),
+ ('Review Editor', 'Geohazards and Georisk, Frontiers in Earth Science', None),
+ ('Young Editorial Board Member', 'Natural Hazards Research; Discover Hazards', None),
+ ('Reviewer', 'Geoscience Communication', None)]
 
 EDUCATION = [('2014–2018',
   'Ph.D., Geotechnical Engineering',

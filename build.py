@@ -206,7 +206,12 @@ def works_page():
     project_cards = "".join(
         theme.static_card(icon, title, desc) for icon, title, desc in data.PROJECTS
     )
-    editorial_items = "".join(f'<li><b>{theme.esc(role)}</b> — {theme.esc(org)}</li>' for role, org in data.EDITORIAL)
+    def editorial_line(role, org, url):
+        org_html = theme.esc(org)
+        if url:
+            org_html = f'<a href="{theme.esc(url)}" target="_blank" rel="noopener">{org_html}</a>'
+        return f'<li><b>{theme.esc(role)}</b> — {org_html}</li>'
+    editorial_items = "".join(editorial_line(role, org, url) for role, org, url in data.EDITORIAL)
     education_items = "".join(
         f'<li><span class="bio-year">{theme.esc(y)}</span>{theme.esc(deg)} — {theme.esc(place)}</li>'
         for y, deg, place in data.EDUCATION
