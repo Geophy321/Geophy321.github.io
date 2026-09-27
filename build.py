@@ -99,15 +99,26 @@ def post_card(item, cover_prefix, href, index=0, animate=False):
 </a>'''
 
 
-def recent_news_banner(news):
-    if not news:
+def rotator_html(items, href_prefix, tag, limit=3):
+    if not items:
         return ""
-    n = news[0]
-    return f'''<a class="news-banner" href="news/{n["slug"]}/index.html">
-  <span class="news-banner-tag">News</span>
+    slides = "".join(
+        f'''<a class="news-slide{" active" if i == 0 else ""}" href="{href_prefix}{n["slug"]}/index.html">
+  <span class="news-banner-tag">{tag}</span>
   <span class="news-banner-title">{theme.esc(n["title"])}</span>
   <span class="news-banner-date">{theme.esc(n["date"])}</span>
 </a>'''
+        for i, n in enumerate(items[:limit])
+    )
+    return f'<div class="news-highlights-rotator">{slides}</div>'
+
+
+def recent_news_banner(news, limit=3):
+    return rotator_html(news, "news/", "News", limit)
+
+
+def recent_blog_banner(posts, limit=3):
+    return rotator_html(posts, "blog/", "Blog", limit)
 
 
 def news_index_page(news):
@@ -157,17 +168,13 @@ def home_page(posts, news):
         theme.link_card("publications/index.html", theme.ICON_DOC, "Publications", "35+ peer-reviewed papers on Scopus"),
     ])
     return f'''
-<div class="intro-box">Hi, I&apos;m a geophysicist working on fibre-optic sensing and geohazard monitoring, based in Stockholm!</div>
-
 <div class="hero-row">
-  <div class="hero-text">
-    <h2 class="page-title">Yawar Hussain</h2>
-    <p class="subtitle">Geophysicist ( Fibre-Optic Sensing / Seismology / Geohazards )</p>
-  </div>
-  <div class="avatar"><img src="images/IMG_1002.jpeg" alt="Yawar Hussain" width="150" height="150" /></div>
-</div>
-
+  <div class="news-highlights">
 {recent_news_banner(news)}
+{recent_blog_banner(posts)}
+  </div>
+  <div class="hero-photo"><img src="images/IMG_1002.jpeg" alt="Yawar Hussain" width="130" height="130" /></div>
+</div>
 
 <section>
   <h3 class="section-title">Work</h3>

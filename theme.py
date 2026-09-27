@@ -9,7 +9,7 @@ def esc(s):
 
 
 # ---------------------------------------------------------------- icons ----
-ICON_DROP = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="footprint"><path d="M12 2.2c-.3.4-6.6 8.06-6.6 12.4a6.6 6.6 0 0 0 13.2 0c0-4.34-6.3-12-6.6-12.4Zm3.55 13.5a4.6 4.6 0 0 1-3.8 2.28.85.85 0 0 1 0-1.7 2.9 2.9 0 0 0 2.42-1.46.85.85 0 0 1 1.38.88Z"/></svg>'
+ICON_DROP = '<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="footprint"><path d="M12 2.2c-.3.4-6.6 8.06-6.6 12.4a6.6 6.6 0 0 0 13.2 0c0-4.34-6.3-12-6.6-12.4Zm3.55 13.5a4.6 4.6 0 0 1-3.8 2.28.85.85 0 0 1 0-1.7 2.9 2.9 0 0 0 2.42-1.46.85.85 0 0 1 1.38.88Z"/></svg>'
 ICON_MOON = '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79Z"/></svg>'
 ICON_SUN = '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><circle cx="12" cy="12" r="4.2"/><g stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2v2.2M12 19.8V22M4.2 4.2l1.55 1.55M18.25 18.25l1.55 1.55M2 12h2.2M19.8 12H22M4.2 19.8l1.55-1.55M18.25 5.75l1.55-1.55"/></g></svg>'
 ICON_MENU = '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 6h18v2H3V6Zm0 5h18v2H3v-2Zm0 5h18v2H3v-2Z"/></svg>'
@@ -179,12 +179,12 @@ a:hover{text-decoration:underline}
 
 #navbar{position:fixed;top:0;left:0;right:0;z-index:20;background:var(--navbg);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .nav-inner{max-width:768px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 16px;flex-wrap:nowrap}
-.logo{display:inline-flex;align-items:center;gap:10px;font-family:'M PLUS Rounded 1c',sans-serif;font-weight:700;font-size:18px;color:var(--fg);padding:6px 4px}
+.logo{display:inline-flex;align-items:center;gap:8px;font-family:'M PLUS Rounded 1c',sans-serif;font-weight:700;font-size:20px;color:var(--fg);padding:6px 4px}
 .logo:hover{text-decoration:none}
 .logo .footprint{transition:transform .2s ease}
 .logo:hover .footprint{transform:rotate(20deg)}
 .nav-right{display:flex;align-items:center;gap:6px}
-.icon-btn{border:none;background:var(--card-bg);color:var(--fg);width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.icon-btn{border:none;background:var(--card-bg);color:var(--fg);width:54px;height:54px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
 .icon-btn:hover{background:var(--btn-bg-hover)}
 a.icon-btn:hover{text-decoration:none}
 .menu-only{display:none}
@@ -196,8 +196,8 @@ a.icon-btn:hover{text-decoration:none}
 .navbar-steps{display:flex;align-items:center;flex:1;min-width:0;padding:0 8px}
 .navbar-step{display:flex;align-items:center;justify-content:center;flex:1;text-decoration:none;color:var(--fg);position:relative;padding:2px}
 .navbar-step:not(:last-child)::after{content:'';position:absolute;top:50%;left:calc(50% + 16px);width:calc(100% - 32px);height:1px;background:var(--card-border);transform:translateY(-50%)}
-.navbar-step-circle{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card-bg);border:1.5px solid var(--card-border);color:var(--btn-fg);transition:background .15s ease,border-color .15s ease;flex-shrink:0;position:relative;z-index:1}
-.navbar-step-circle svg{width:15px;height:15px}
+.navbar-step-circle{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card-bg);border:1.5px solid var(--card-border);color:var(--btn-fg);transition:background .15s ease,border-color .15s ease;flex-shrink:0;position:relative;z-index:1}
+.navbar-step-circle svg{width:22px;height:22px}
 .navbar-step:hover .navbar-step-circle,.navbar-step.active .navbar-step-circle{background:var(--accent);border-color:var(--accent)}
 .navbar-step.active .navbar-step-circle{color:#20202b}
 .navbar-step:hover{text-decoration:none}
@@ -208,20 +208,20 @@ a.icon-btn:hover{text-decoration:none}
   #mobile-menu:not([hidden]){display:flex}
 }
 
-main.container{padding-top:70px;padding-bottom:48px}
+main.container{padding-top:94px;padding-bottom:48px}
 
 .intro-box{border-radius:12px;margin-bottom:24px;padding:12px;text-align:center;background:var(--card-bg);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--card-border)}
-.hero-row{display:flex;align-items:center;gap:24px;margin-bottom:24px;flex-wrap:wrap}
-.hero-text{flex:1;min-width:200px}
-.page-title{font-size:28px}
-.subtitle{margin:6px 0 0;color:var(--fg-soft)}
-.avatar{flex-shrink:0}
-.avatar img{width:150px;height:150px;border-radius:999px;object-fit:cover;border:2px solid var(--card-border)}
-.news-banner{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--btn-bg);border:1px solid var(--accent);border-radius:999px;padding:8px 16px;margin-bottom:20px;color:var(--fg);text-decoration:none;transition:background .15s}
-.news-banner:hover{background:var(--btn-bg-hover);text-decoration:none}
+.hero-row{display:flex;align-items:center;gap:28px;margin-bottom:28px;flex-wrap:wrap}
+.news-highlights{flex:1;min-width:240px;display:flex;flex-direction:column;gap:14px}
+.news-highlights-rotator{position:relative;height:64px}
+.news-slide{position:absolute;inset:0;display:flex;align-items:center;gap:12px;flex-wrap:nowrap;background:var(--btn-bg);border:1px solid var(--accent);border-radius:999px;padding:16px 26px;color:var(--fg);text-decoration:none;font-size:17px;opacity:0;transform:translateY(12px);transition:opacity .35s ease,transform .35s ease;pointer-events:none;overflow:hidden}
+.news-slide.active{opacity:1;transform:translateY(0);pointer-events:auto}
+.news-slide:hover{background:var(--btn-bg-hover);text-decoration:none}
 .news-banner-tag{background:var(--accent);color:#20202b;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 9px;border-radius:999px;flex-shrink:0}
-.news-banner-title{font-weight:600}
-.news-banner-date{color:var(--fg-soft);font-size:13px;margin-left:auto}
+.news-banner-title{font-weight:600;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;min-width:0;flex:1 1 auto}
+.news-banner-date{color:var(--fg-soft);font-size:13px;margin-left:auto;flex-shrink:0}
+.hero-photo{flex-shrink:0}
+.hero-photo img{width:130px;height:130px;border-radius:999px;object-fit:cover;border:3px solid var(--card-border)}
 
 /* Sequential fly-in used ONLY on the News list page — each article appears
    one after another as the page loads, from an alternating direction. */
@@ -236,7 +236,7 @@ main.container{padding-top:70px;padding-bottom:48px}
 .bio-year{font-weight:bold;margin-right:1em}
 
 .center-cta{text-align:center;margin:16px 0}
-.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;background:var(--btn-bg);color:var(--btn-fg);font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:10px;background:var(--btn-bg);color:var(--btn-fg);font-weight:600;font-size:17px}
 .btn:hover{background:var(--btn-bg-hover);text-decoration:none}
 
 .link-list{list-style:none;padding:0;margin:0 0 16px}
@@ -334,6 +334,20 @@ SCRIPT = '''
   var menuBtn = document.getElementById('menu-btn');
   var mobileMenu = document.getElementById('mobile-menu');
   menuBtn.addEventListener('click', function(){ mobileMenu.hidden = !mobileMenu.hidden; });
+
+  // Auto-rotate superimposed highlight frames (News, Blog): one slide visible
+  // at a time per frame, stacked in the same spot, cross-fading via CSS.
+  document.querySelectorAll('.news-highlights-rotator').forEach(function(rotator){
+    var slides = rotator.querySelectorAll('.news-slide');
+    if (slides.length > 1) {
+      var idx = 0;
+      setInterval(function(){
+        slides[idx].classList.remove('active');
+        idx = (idx + 1) % slides.length;
+        slides[idx].classList.add('active');
+      }, 4000);
+    }
+  });
 })();
 '''
 SCRIPT = SCRIPT.replace('__ICON_MOON__', ICON_MOON.replace("'", "\\'")).replace('__ICON_SUN__', ICON_SUN.replace("'", "\\'"))
