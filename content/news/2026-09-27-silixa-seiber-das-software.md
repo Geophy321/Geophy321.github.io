@@ -1,7 +1,7 @@
 Title: Working with commercial DAS software: Silixa SeiBer
 Date: 2026-09-27
 Summary: Setting up Silixa's SeiBer software for DAS processing on active-source MASW surveys on embankment dams.
-Cover: images/seiber-setup.png
+Cover: images/seiber_sketch.png
 
 For about ten years I have worked mostly with open-source code. It gave me flexibility and a deep understanding of the methods, but as my work has moved from academic to industrial research, I have started using commercial software as well. In operational monitoring, stability and well-tested tools matter as much as flexibility.
 
