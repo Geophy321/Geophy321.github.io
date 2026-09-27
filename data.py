@@ -3,8 +3,8 @@
 """
 BIO_ROWS = [
     ('2026–present', 'Specialist, Infrastructure Hazard Monitoring, Stockholm, Sweden.'),
-    ('2018–2025', 'Postdoctoral research across Brazil, Belgium, Italy and the United States - fibre-optic sensing, seismic monitoring and geohazard assessment.'),
-    ('2014–2018', 'Ph.D. in Geotechnical Engineering, study of rainfall triggered landslides.'),
+    ('2018–2025', 'Postdoctoral research across Brazil, Belgium, Italy and the United States.'),
+    ('2014–2018', 'Ph.D. in Geotechnical Engineering.'),
     ('2012–2014', 'M.Phil in HydroGeophysics.'),
     ('2009–2011', 'M.Sc. in Geophysics, Seismic Reflection.'),]
 

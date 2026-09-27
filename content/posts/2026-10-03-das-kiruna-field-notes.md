@@ -1,4 +1,4 @@
-Title: [**Mid night sun**] How this blog works
+Title: Mid night sun
 Date: 2026-01-02
 Summary: A field work to Kiruna— delete once real posts are up.
 
