@@ -20,6 +20,7 @@ import data
 ROOT = Path(__file__).parent
 OUT = ROOT / "dist"
 POSTS_DIR = ROOT / "content/posts"
+NEWS_DIR = ROOT / "content/news"
 
 
 def load_posts():
@@ -41,6 +42,67 @@ def load_posts():
     return posts
 
 
+def load_news():
+    news = []
+    if NEWS_DIR.exists():
+        for f in sorted(NEWS_DIR.glob("*.md")):
+            if f.name.startswith("_"):
+                continue  # _template.md and similar are skipped
+            md = markdown.Markdown(extensions=["meta", "extra"])
+            body_html = md.convert(f.read_text(encoding="utf-8"))
+            meta = md.Meta or {}
+            news.append({
+                "slug": f.stem,
+                "title": meta.get("title", [f.stem])[0],
+                "date": meta.get("date", [""])[0],
+                "summary": meta.get("summary", [""])[0],
+                "body_html": body_html,
+            })
+    news.sort(key=lambda n: n["date"], reverse=True)
+    return news
+
+
+def recent_news_banner(news):
+    if not news:
+        return ""
+    n = news[0]
+    return f'''<a class="news-banner" href="news/{n["slug"]}/index.html">
+  <span class="news-banner-tag">News</span>
+  <span class="news-banner-title">{theme.esc(n["title"])}</span>
+  <span class="news-banner-date">{theme.esc(n["date"])}</span>
+</a>'''
+
+
+def news_index_page(news):
+    if not news:
+        body = f'''<div class="empty-state">
+  <div class="grid-thumb" style="margin:0 auto 12px">{theme.ICON_PEN}</div>
+  <p>No news yet — updates on new publications, project milestones and other announcements
+  will show up here.</p>
+</div>'''
+    else:
+        body = "".join(f'''<div class="post-list-item">
+  <div class="post-date">{theme.esc(n["date"])}</div>
+  <div class="post-title"><a href="{n["slug"]}/index.html">{theme.esc(n["title"])}</a></div>
+  <div class="post-summary">{theme.esc(n["summary"])}</div>
+</div>''' for n in news)
+    return f'''
+<h3 class="page-heading">News</h3>
+{body}
+'''
+
+
+def news_item_page(n):
+    return f'''
+<article>
+  <h3 class="page-heading">{theme.esc(n["title"])}</h3>
+  <p class="post-date">{theme.esc(n["date"])}</p>
+  <div class="post-body">{n["body_html"]}</div>
+  <p><a href="../index.html">&larr; Back to News</a></p>
+</article>
+'''
+
+
 def recent_post_teaser(posts):
     if not posts:
         return ""
@@ -52,7 +114,7 @@ def recent_post_teaser(posts):
 </div>'''
 
 
-def home_page(posts):
+def home_page(posts, news):
     bio_rows = "\n".join(
         f'<div class="bio-row"><span class="bio-year">{theme.esc(y)}</span>{theme.esc(t)}</div>'
         for y, t in data.BIO_ROWS
@@ -70,8 +132,10 @@ def home_page(posts):
     <h2 class="page-title">Yawar Hussain</h2>
     <p class="subtitle">Geophysicist ( Fibre-Optic Sensing / Seismology / Geohazards )</p>
   </div>
-  <div class="avatar"><img src="images/IMG_1002.jpeg" alt="Yawar Hussain" width="100" height="100" /></div>
+  <div class="avatar"><img src="images/IMG_1002.jpeg" alt="Yawar Hussain" width="150" height="150" /></div>
 </div>
+
+{recent_news_banner(news)}
 
 <section class="fade" style="--d:0.1s">
   <h3 class="section-title">Work</h3>
@@ -208,6 +272,7 @@ def build():
     (OUT / "fieldwork").mkdir(parents=True)
     (OUT / "publications").mkdir(parents=True)
     (OUT / "blog").mkdir(parents=True)
+    (OUT / "news").mkdir(parents=True)
 
     (OUT / "assets/css/main.css").write_text(theme.CSS)
     (OUT / "assets/js/main.js").write_text(theme.SCRIPT)
@@ -215,12 +280,21 @@ def build():
     (OUT / ".nojekyll").write_text("")  # tell GitHub Pages this isn't a Jekyll site
 
     posts = load_posts()
+    news = load_news()
 
-    (OUT / "index.html").write_text(theme.layout("Yawar Hussain", "", home_page(posts), base=""))
+    (OUT / "index.html").write_text(theme.layout("Yawar Hussain", "", home_page(posts, news), base=""))
     (OUT / "works/index.html").write_text(theme.layout("Works", "works/", works_page(), base="../"))
     (OUT / "fieldwork/index.html").write_text(theme.layout("Fieldwork", "fieldwork/", fieldwork_page(), base="../"))
     (OUT / "publications/index.html").write_text(theme.layout("Publications", "publications/", publications_page(), base="../"))
     (OUT / "blog/index.html").write_text(theme.layout("Blog", "blog/", blog_index_page(posts), base="../"))
+    (OUT / "news/index.html").write_text(theme.layout("News", "news/", news_index_page(news), base="../"))
+
+    for n in news:
+        page_dir = OUT / "news" / n["slug"]
+        page_dir.mkdir(parents=True, exist_ok=True)
+        (page_dir / "index.html").write_text(
+            theme.layout(n["title"], "news/", news_item_page(n), base="../../", description=n["summary"] or None)
+        )
 
     for p in posts:
         page_dir = OUT / "blog" / p["slug"]

@@ -24,7 +24,7 @@ TILE_ICONS = {
     "briefcase": '<svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M9 3h6a1 1 0 0 1 1 1v2h4a2 2 0 0 1 2 2v3H2V8a2 2 0 0 1 2-2h4V4a1 1 0 0 1 1-1Zm1 3h4V5h-4v1ZM2 12h20v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-6Z"/></svg>',
 }
 
-NAV_LINKS = [("", "About"), ("works/", "Works"), ("fieldwork/", "Fieldwork"),
+NAV_LINKS = [("", "About"), ("news/", "News"), ("works/", "Works"), ("fieldwork/", "Fieldwork"),
              ("blog/", "Blog"), ("publications/", "Publications")]
 
 
@@ -81,8 +81,7 @@ def layout(title, active, body, base="", description=None):
 {body}
 </main>
 <footer>
-  &copy; 2026 Yawar Hussain. All Rights Reserved.<br/>
-  Design based on <a href="https://www.craftz.dog/" target="_blank" rel="noopener">Takuya Matsuyama&apos;s homepage</a> (MIT-licensed source, 3D model excluded per its CC BY-NC-ND terms).
+  &copy; 2026 Yawar Hussain. All Rights Reserved.
 </footer>
 <script src="{base}assets/js/main.js"></script>
 </body>
@@ -197,7 +196,12 @@ main.container{padding-top:70px;padding-bottom:48px}
 .page-title{font-size:28px}
 .subtitle{margin:6px 0 0;color:var(--fg-soft)}
 .avatar{flex-shrink:0}
-.avatar img{width:100px;height:100px;border-radius:999px;object-fit:cover;border:2px solid var(--card-border)}
+.avatar img{width:150px;height:150px;border-radius:999px;object-fit:cover;border:2px solid var(--card-border)}
+.news-banner{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--btn-bg);border:1px solid var(--accent);border-radius:999px;padding:8px 16px;margin-bottom:20px;color:var(--fg);text-decoration:none;transition:background .15s}
+.news-banner:hover{background:var(--btn-bg-hover);text-decoration:none}
+.news-banner-tag{background:var(--accent);color:#20202b;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 9px;border-radius:999px;flex-shrink:0}
+.news-banner-title{font-weight:600}
+.news-banner-date{color:var(--fg-soft);font-size:13px;margin-left:auto}
 
 .fade{margin-bottom:24px;animation:fadeIn .6s ease both;animation-delay:var(--d,0s)}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
