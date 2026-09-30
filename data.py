@@ -354,3 +354,4 @@ PUBLICATIONS = {'Climate Change and Water Resources': [('Hussain, et al. (2017).
                     'sediment deposition, Tarimba Cave, Central Brazil. '
                     'Quaternary International.',
                     'https://www.sciencedirect.com/science/article/abs/pii/S104061822100029X')]}
+TEACHING = []
