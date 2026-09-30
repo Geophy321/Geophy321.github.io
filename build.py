@@ -10,6 +10,7 @@ content/posts/YYYY-MM-DD-my-post.md, fill it in, run `python build.py` again
 (or just push — the GitHub Actions workflow does this for you, see README).
 No other file needs to change; the post appears on the Blog page automatically.
 """
+import html
 import re
 import shutil
 from pathlib import Path
@@ -22,6 +23,7 @@ ROOT = Path(__file__).parent
 OUT = ROOT / "dist"
 POSTS_DIR = ROOT / "content/posts"
 NEWS_DIR = ROOT / "content/news"
+SITE = "https://geophy321.github.io"
 
 
 def reading_time(body_html):
@@ -29,6 +31,20 @@ def reading_time(body_html):
     words = len(text.split())
     minutes = max(1, round(words / 200))
     return f"{minutes} min read"
+
+
+def with_og(page, item, section):
+    """Add Open Graph tags to <head> so LinkedIn and others show title, summary and cover."""
+    tags = {
+        "og:title": item["title"],
+        "og:description": item["summary"],
+        "og:type": "article",
+        "og:url": f"{SITE}/{section}/{item['slug']}/index.html",
+    }
+    if item["cover"]:
+        tags["og:image"] = f"{SITE}/{item['cover'].lstrip('/')}"
+    meta = "".join(f'<meta property="{k}" content="{html.escape(v)}">\n' for k, v in tags.items())
+    return page.replace("</head>", meta + "</head>", 1)
 
 
 def load_posts():
@@ -223,6 +239,12 @@ def works_page():
         f'<li>{theme.esc(deg)} — {theme.esc(place)}</li>'
         for deg, place in data.EDUCATION
     )
+    def teaching_line(role, desc, url):
+        line = f'<li><b>{theme.esc(role)}</b> — {theme.esc(desc)}'
+        if url:
+            line += f' <a href="{theme.esc(url)}" target="_blank" rel="noopener">(read more)</a>'
+        return line + '</li>'
+    teaching_items = "".join(teaching_line(role, desc, url) for role, desc, url in data.TEACHING)
     conferences_items = "".join(f'<li>{theme.esc(c)}</li>' for c in data.CONFERENCES)
     return f'''
 <h3 class="page-heading">Works</h3>
@@ -241,6 +263,10 @@ def works_page():
 <hr class="divider" />
 <h4 class="sub-heading">Education</h4>
 {theme.plain_list(education_items)}
+
+<hr class="divider" />
+<h4 class="sub-heading">Teaching</h4>
+{theme.plain_list(teaching_items)}
 
 <hr class="divider" />
 <h4 class="sub-heading">Selected Conferences</h4>
@@ -327,16 +353,16 @@ def build():
     for n in news:
         page_dir = OUT / "news" / n["slug"]
         page_dir.mkdir(parents=True, exist_ok=True)
-        (page_dir / "index.html").write_text(
-            theme.layout(n["title"], "news/", news_item_page(n), base="../../", description=n["summary"] or None)
-        )
+        (page_dir / "index.html").write_text(with_og(
+            theme.layout(n["title"], "news/", news_item_page(n), base="../../", description=n["summary"] or None),
+            n, "news"))
 
     for p in posts:
         page_dir = OUT / "blog" / p["slug"]
         page_dir.mkdir(parents=True, exist_ok=True)
-        (page_dir / "index.html").write_text(
-            theme.layout(p["title"], "blog/", post_page(p), base="../../", description=p["summary"] or None)
-        )
+        (page_dir / "index.html").write_text(with_og(
+            theme.layout(p["title"], "blog/", post_page(p), base="../../", description=p["summary"] or None),
+            p, "blog"))
 
     print(f"built {len(posts)} post(s) -> {OUT}")
 

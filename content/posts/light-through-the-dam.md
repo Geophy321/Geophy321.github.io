@@ -1,23 +1,32 @@
-# Light Through the Tailings, Gold Through the Trees
-
+Title: Light Through the Tailings, Gold Through the Trees
 Date: 2026-09-29
 Summary: Autumn fieldwork in Sweden comes with a bonus: forests turning gold, red and purple against the dark green spruce.
 Cover: images/autumn.jpeg
 
-<div style="text-align: justify;">
+<div markdown="1" style="text-align: justify;">
 
-This time we worked at one of the most modern mines in the world, and one with more than 100 years of history. Our focus was its tailings dam. When ore is mined, most of the rock is left over as a fine, wet material called tailings, stored behind large earth embankments. If a dam deforms or fails, tailings can flow into rivers and land downstream, harming the environment and nearby communities.
+We're excited to share the results of our autumn field deployment: distributed fibre-optic sensing installed on a tailings dam at one of the most modern mines in the world, and one with more than 100 years of history.
 
-![Tailings dam at the mine site](/../images/tailing.jpeg)
+Around the world, tailings dams hold back billions of tonnes of fine, wet mine waste, and many of them must stay stable for decades after mining ends. When they fail, the damage reaches rivers, farmland and the communities downstream. Yet dam deformation is a slow hazard, and it is still monitored mostly from the surface. Surveys and satellites are powerful tools, but they show how the surface moves, not what is happening inside the embankment.
 
-We installed fibre-optic cable in the dam and measured it with distributed strain sensing (DSS). Light sent through the fibre shows how much the cable is stretched or compressed along its entire length. If strain keeps increasing in one area over time, it can be an early warning that the ground is moving, giving operators time to act. Since temperature also affects the readings, we ran distributed temperature sensing (DTS) on the same cables to correct the strain data.
+![Tailings dam at the mine site](../../images/tailing.jpeg)
 
-![Fibre-optic cable installation](/../images/installation.jpeg)
+Our goal is to measure it directly. We installed fibre-optic cable in the dam and measured it with distributed strain sensing (DSS), turning a single cable into thousands of sensors along its length. Light sent through the fibre shows where the embankment is stretching or compressing, and how that strain evolves over time. A steady increase in one section can be an early warning of movement, well before it shows at the surface. To separate real ground movement from seasonal warming and cooling, we ran distributed temperature sensing (DTS) on the same cables and used it to correct the strain data.
 
-A great few days in the field, made easy and enjoyable by a fantastic co-worker. Great field days, great data.
+![Fibre-optic cable installation](../../images/installation.jpeg)
 
-![Field team](/../images/team.jpeg)
+The aim is ground-truth subsurface data that complements existing monitoring and feeds into decision support for the people responsible for these structures: dam operators, mine planners, regulators, and the communities and ecosystems downstream.
 
-#DTS #DSS #FibreOpticSensing #TailingsDam #Geophysics #Sweden
+We're grateful to our co-worker, whose skill and good humour made every long day in the field easy and enjoyable.
+
+![Field team](../../images/team.jpeg)
+
+And the setting helped too. Swedish autumn turned the forests around the site gold, red and purple against the dark green spruce.
+
+![Swedish autumn near the site](../../images/autumn.jpeg)
+
+Great field days, great data.
+
+\#DTS #DSS #FibreOpticSensing #TailingsDam #MineSafety #Geophysics #Sweden
 
 </div>
