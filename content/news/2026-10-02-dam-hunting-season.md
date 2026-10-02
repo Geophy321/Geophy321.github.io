@@ -67,8 +67,8 @@ The same noise can also be used for imaging. In ambient noise tomography, we mea
 The two approaches complement each other. Active MASW gives sharp, high-frequency detail in the upper part of the embankment at the time of the survey. Passive methods reach lower frequencies and greater depths, and turn a one-off survey into continuous monitoring.
 
 <div style="display: flex; gap: 10px;">
-  <img src="../../images/EVR2.png" alt="EVR2 configuration" style="width: 50%; object-fit: cover;">
-  <img src="../../images/iDAS-MG.png" alt="iDAS Multi-Gauge Interrogator" style="width: 50%; object-fit: cover;">
+  <img src="../../images/EVR2.png" alt="EVR2 configuration" style="width: 20%; object-fit: cover;">
+  <img src="../../images/iDAS-MG.png" alt="iDAS Multi-Gauge Interrogator" style="width: 80%; object-fit: cover;">
 </div>
 
 ### Interpreting the results
