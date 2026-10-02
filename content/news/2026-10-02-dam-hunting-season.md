@@ -49,12 +49,6 @@ The seismic waves come from a GISCO ESS100, an electric accelerated weight drop.
 To match each hit to the fiber recording, an EVR-2 GPS event recorder is connected to the source trigger. Every shot gets a precise GPS time stamp, a line number and a station number. Each roughly 50-meter section of the dam is treated as its own line, so the shot list follows the structure of the dam itself. The time stamps are then used to cut the shots out of the continuous DAS record.
 
 
-<div style="display: flex; gap: 10px;">
-  <img src="../../images/EVR2.png" alt="EVR2 configuration" style="width: 50%; object-fit: cover;">
-  <img src="../../images/iDAS-MG.png" alt="iDAS Multi-Gauge Interrogator" style="width: 50%; object-fit: cover;">
-</div>
-
-
 Before any cutting happens, the shot logs need some housekeeping. For each OB log in `./data/`, a short script does four things:
 
 * **Reads the log.** The EVR-2 writes one tab-separated row per trigger, with FFID, line, station (Point), UTC date and time, GPS time in microseconds, and latitude/longitude.
@@ -71,6 +65,11 @@ The fiber keeps listening when the source stops. Between shots, and long after t
 The same noise can also be used for imaging. In ambient noise tomography, we measure how fast surface waves travel between many pairs of channels at different frequencies, and invert those travel times for a shear-wave velocity model. With a channel every meter or so, the fiber provides a very dense set of measurements and a high-resolution velocity image along the length of the dam. Because the noise never stops, the image can be rebuilt again and again to see whether a suspicious zone is stable or growing.
 
 The two approaches complement each other. Active MASW gives sharp, high-frequency detail in the upper part of the embankment at the time of the survey. Passive methods reach lower frequencies and greater depths, and turn a one-off survey into continuous monitoring.
+
+<div style="display: flex; gap: 10px;">
+  <img src="../../images/EVR2.png" alt="EVR2 configuration" style="width: 50%; object-fit: cover;">
+  <img src="../../images/iDAS-MG.png" alt="iDAS Multi-Gauge Interrogator" style="width: 50%; object-fit: cover;">
+</div>
 
 ### Interpreting the results
 
