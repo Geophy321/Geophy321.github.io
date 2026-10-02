@@ -48,7 +48,12 @@ The seismic waves come from a GISCO ESS100, an electric accelerated weight drop.
 
 To match each hit to the fiber recording, an EVR-2 GPS event recorder is connected to the source trigger. Every shot gets a precise GPS time stamp, a line number and a station number. Each roughly 50-meter section of the dam is treated as its own line, so the shot list follows the structure of the dam itself. The time stamps are then used to cut the shots out of the continuous DAS record.
 
-![EVR-2 GPS setup](../../images/EVR2.png)
+
+<div style="display: flex; gap: 10px;">
+  <img src="../../images/EVR2.png" alt="EVR2 configuration" style="width: 50%; object-fit: cover;">
+  <img src="../../images/iDAS-MG.png" alt="iDAS Multi-Gauge Interrogator" style="width: 50%; object-fit: cover;">
+</div>
+
 
 Before any cutting happens, the shot logs need some housekeeping. For each OB log in `./data/`, a short script does four things:
 
