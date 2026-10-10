@@ -1,5 +1,5 @@
 Title: From Luleå to Porjus
-Date: 2026-10-06
+Date: 2026-10-03
 Summary: A drive inland along the Lule River, from the coast at Luleå across the Arctic Circle to Porjus.
 Cover: images/lule-cover-wide.jpeg
 
@@ -25,6 +25,6 @@ A day on this road teaches you something a map cannot: how the river, the forest
 
 <img src="../../images/lule-panel.jpeg" alt="The route, the car and field kit, and the aurora at night" style="width:100%;display:block;margin:16px auto;border-radius:4px;">
 
-<video controls playsinline muted preload="metadata" poster="../../images/lule-river-clip-poster.jpeg" style="display:block;width:100%;max-width:560px;margin:16px auto;border-radius:6px;"><source src="../../images/lule-river-clip.mp4" type="video/mp4"></video>
+<video controls playsinline muted preload="metadata" poster="../../images/lule-river-clip-poster.jpeg" style="display:block;width:100%;max-width:560px;margin:16px auto;border-radius:6px;"><source src="../../images/lule-river-clip.webm" type="video/webm"><source src="../../images/lule-river-clip.mp4" type="video/mp4"></video>
 
 </div>
