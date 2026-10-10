@@ -1,5 +1,5 @@
 Title: From Luleå to Porjus
-Date: 2026-10-03
+Date: 2026-10-06
 Summary: A drive inland along the Lule River, from the coast at Luleå across the Arctic Circle to Porjus.
 Cover: images/lule-cover-wide.jpeg
 
