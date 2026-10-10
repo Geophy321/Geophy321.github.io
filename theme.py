@@ -283,7 +283,7 @@ a.post-card:hover{text-decoration:none;background:var(--btn-bg-hover)}
 .post-card-cover-empty{display:flex;align-items:center;justify-content:center;color:var(--btn-fg);background:var(--btn-bg)}
 .post-card-body{padding:14px 16px}
 .post-card .post-title{font-size:17px;margin:4px 0 6px}
-.post-cover{display:block;width:100%;max-height:320px;object-fit:cover;border-radius:12px;margin-bottom:16px}
+.post-cover{display:block;width:100%;max-height:420px;object-fit:contain;border-radius:12px;margin-bottom:16px}
 
 .post-body{line-height:1.7}
 .post-body h1,.post-body h2,.post-body h3{margin:1.4em 0 .5em}
