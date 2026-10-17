@@ -1,13 +1,9 @@
----
-layout: post
-title: "The Static Shift Method: What Frequency Selection Is, and Why It Took 40 Years to Explain"
-date: 2026-10-17
-tags: [geophysics, electromagnetic-methods, groundwater, karst, telluric-currents]
-image: /images/fsm/sketch-survey-setup-preview.png
-excerpt: "For forty years, Chinese field geophysicists have used a cheap, one-component instrument to find water, caves and seepage paths, reading a signal the rest of the electromagnetic world was trained to throw away."
----
+Title: The Static Shift Method: What Frequency Selection Is, and Why It Took 40 Years to Explain
+Date: 2026-10-17
+Summary: For forty years, Chinese field geophysicists have used a cheap, one-component instrument to find water, caves and seepage paths, reading a signal the rest of the electromagnetic world was trained to throw away.
+Cover: images/sketch-survey-setup-preview.png
 
-*Note: image paths below assume a local `images/` folder next to this post, adjust to match your site's asset structure (e.g. `/assets/img/fsm/...`) before publishing. The `image:` field above is a common Jekyll cover-image convention, rename or remove it to match your theme's actual front matter key.*
+<div markdown="1" style="text-align: justify;">
 
 ## A method that worked for forty years before anyone could say why
 
@@ -133,3 +129,5 @@ Yang, Gao, Li, Fu & Hussain (2023). *Pure and Applied Geophysics* 180(3), 969–
 Yang, Zhu, Hussain, Huang, Yu & Ding (2025). *Journal of Applied Geophysics* 233, 105608.
 
 Zhu, Yang, Hussain & Qin (2026). *Transactions on Electromagnetic Spectrum* 5(2), 35–50.
+
+</div>
