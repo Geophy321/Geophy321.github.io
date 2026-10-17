@@ -54,11 +54,11 @@ $$q_s = \varepsilon_0 E_{n2}\frac{\sigma_2-\sigma_1}{\sigma_1}$$
 
 where $\sigma_1,\sigma_2$ are the conductivities of the anomalous body and the surrounding rock, $E_n$ is the normal electric field strength at the interface, and $\varepsilon_0$ is the permittivity of free space (Yang *et al.*, 2023). That accumulated charge generates a secondary electric field with the *same phase as the primary field, independent of frequency*. That is exactly why it is called a static shift rather than an induction response. It is small, but right at the surface, it is impossible to ignore.
 
-<img src="images/fig-published-static-shift-schematic.png" alt="Published schematic from Yang et al. 2023 showing current lines converging into a low-resistivity body, with surface charge accumulating at both edges and distorting the surface electric field directly above it." style="max-width:100%;">
+<img src="/images/fig-published-static-shift-schematic.png" alt="Published schematic from Yang et al. 2023 showing current lines converging into a low-resistivity body, with surface charge accumulating at both edges and distorting the surface electric field directly above it." style="max-width:100%;">
 
 *Figure 1 from Yang, Gao, Li, Fu & Hussain (2023), <em>Pure and Applied Geophysics</em> 180, 969–982: current lines bending around a near-surface low-resistivity anomaly, with charge accumulating at its edges and distorting the observed surface field directly above it.*
 
-<img src="images/sketch-charge-mechanism-preview.png" alt="Side-by-side sketch comparing a resistive body, where current spreads around it and the surface signal shows a high-value bump, against a conductive body, where current crowds into it and the surface signal shows a low-value dip." style="max-width:100%;">
+<img src="/images/sketch-charge-mechanism-preview.png" alt="Side-by-side sketch comparing a resistive body, where current spreads around it and the surface signal shows a high-value bump, against a conductive body, where current crowds into it and the surface signal shows a low-value dip." style="max-width:100%;">
 
 *Fig. B: The same mechanism, simplified. A resistive body forces current to spread around it, and the surface reads a high-value bump directly above; a conductive body pulls current into it, and the surface reads a low-value dip. Finite-element modelling (Yang* et al.*, 2023; Yang* et al.*, 2025) confirms exactly this sign flip between high- and low-resistivity targets.*
 
@@ -72,7 +72,7 @@ $$P = \log\left(\frac{\Delta V}{\Delta V_{min}}\right)$$
 
 where $\Delta V_{min}$ is the smallest observed value on the profile (set to 0.001 mV if the true minimum is zero, to avoid division by zero). This compresses the dynamic range, suppresses the loud anomalies, and boosts the weak ones, producing far more uniform contour spacing in the pseudo-section.
 
-<img src="images/fig-lognorm-curves.png" alt="Before-and-after comparison of frequency-selection profile curves: raw electric field data on top, logarithmically normalised data below, showing the anomaly over a buried resistivity body becoming far more consistent and legible across all plotted frequencies." style="max-width:100%;">
+<img src="/images/fig-lognorm-curves.png" alt="Before-and-after comparison of frequency-selection profile curves: raw electric field data on top, logarithmically normalised data below, showing the anomaly over a buried resistivity body becoming far more consistent and legible across all plotted frequencies." style="max-width:100%;">
 
 *Figure 1(b,c) from Zhu, Yang, Hussain & Qin (2026), <em>Transactions on Electromagnetic Spectrum</em> 5(2), 35–50: the same forward-modelled anomaly before (top) and after (bottom) logarithmic normalisation. The dip over the buried body becomes consistent and well-defined across every frequency, rather than nearly invisible at some and exaggerated at others.*
 
@@ -84,7 +84,7 @@ Theory is only half the story; FSM's real case for existing is a string of drill
 
 **Three boreholes, three confirmed caves.** In a limestone mine near Linxiang City, Hunan, a TC150 selector scanning 36 frequencies flagged anomalies at three positions along a profile. Three separate boreholes were drilled to check them. YZ4 intersected a mud-and-clay-filled karst cave at 36.0–38.3 m depth. ZK2 intersected two semi-filled karst caves, at 22.5–31.0 m and 37.6–42.4 m. ZK1 intersected caves at 18.5–31.0 m and 34.5–40.5 m (Yang *et al.*, 2023). Three for three.
 
-<img src="images/fig-linxiang-boreholes.png" alt="Field photo of a frequency-selection survey in Linxiang City, alongside a pseudo-section showing strong anomalies at three positions later confirmed by boreholes YZ4, ZK2 and ZK1 to be karst caves." style="max-width:100%;">
+<img src="/images/fig-linxiang-boreholes.png" alt="Field photo of a frequency-selection survey in Linxiang City, alongside a pseudo-section showing strong anomalies at three positions later confirmed by boreholes YZ4, ZK2 and ZK1 to be karst caves." style="max-width:100%;">
 
 *Figure 10 from Yang, Gao, Li, Fu & Hussain (2023): field measurement in Linxiang City (a), and the resulting pseudo-section (b), with three subsequent boreholes (YZ4, ZK2, ZK1) all confirming karst caves exactly where the static-shift anomalies predicted them.*
 
@@ -92,7 +92,7 @@ Theory is only half the story; FSM's real case for existing is a string of drill
 
 **A dam, not just a borehole.** The case closest to my own current work: a seepage survey at Dishuiyan Reservoir, a small Hunan dam, using a dedicated PQ-227B dam-piping detector (450–5000 Hz, roughly 50 m depth). Several low-potential anomalies were identified along the dam crest; after logarithmic processing, the pseudo-section pointed to severe seepage concentrated between 10 and 30 m depth at several stations, interpreted as occurring mainly near the dam body/bedrock interface (Zhu *et al.*, 2026).
 
-<img src="images/fig-dam-seepage.png" alt="Pseudo-sections of potential difference across a dam survey line at Dishuiyan Reservoir, before and after logarithmic processing, showing several seepage anomalies concentrated near the dam body/bedrock interface." style="max-width:100%;">
+<img src="/images/fig-dam-seepage.png" alt="Pseudo-sections of potential difference across a dam survey line at Dishuiyan Reservoir, before and after logarithmic processing, showing several seepage anomalies concentrated near the dam body/bedrock interface." style="max-width:100%;">
 
 *Figure 11 from Zhu, Yang, Hussain & Qin (2026): ΔV pseudo-section across the Dishuiyan Reservoir dam crest, raw (a) and logarithmically processed (b). The processed section resolves several seepage-consistent anomalies that are far harder to isolate in the raw data.*
 
