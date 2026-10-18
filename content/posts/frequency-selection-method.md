@@ -5,8 +5,6 @@ Cover: images/sketch-survey-setup-preview.png
 
 <div markdown="1" style="text-align: justify;">
 
-## A method that worked for forty years before anyone could say why
-
 Field geophysics has a particular kind of embarrassment. A method that keeps finding water, keeps finding caves, keeps finding seepage paths, and that nobody can fully explain. For the frequency selection method (FSM), that embarrassment lasted from the late 1970s until 2023.
 
 FSM is a family of electromagnetic surveying techniques, developed almost entirely by Chinese researchers, that uses nothing but a pair of electrodes, a lightweight "frequency selector," and the Earth's own natural electrical currents. No transmitter. No battery-hungry source. You plant two electrodes a few metres apart, read a voltage at a handful of fixed frequencies, walk the line, and look for where the curve dips. Where it dips, something changes underground: a cave, a fault, a water table, a leak in a dam. Instruments weighing under a kilogram have been doing this across more than a hundred countries for decades.
@@ -46,7 +44,9 @@ Yang, Gao, Li, Fu and Hussain (2023) made the case that this was close-mindednes
 
 The physical cause is straightforward once stated. When current flows through the boundary of an electrically inhomogeneous body, Gauss's law and current continuity require charge to accumulate on that interface:
 
+<div>
 $$q_s = \varepsilon_0 E_{n2}\frac{\sigma_2-\sigma_1}{\sigma_1}$$
+</div>
 
 where $\sigma_1,\sigma_2$ are the conductivities of the anomalous body and the surrounding rock, $E_n$ is the normal electric field strength at the interface, and $\varepsilon_0$ is the permittivity of free space (Yang *et al.*, 2023). That accumulated charge generates a secondary electric field with the *same phase as the primary field, independent of frequency*. That is exactly why it is called a static shift rather than an induction response. It is small, but right at the surface, it is impossible to ignore.
 
@@ -64,7 +64,9 @@ The real contribution of Yang *et al.* (2023) is not a new instrument or a new s
 
 A raw FSM profile is noisy. The dynamic range of the measured potential difference (ΔV) is large, and strong shallow anomalies tend to swamp weaker, deeper ones in the pseudo-section, producing low signal-to-noise, hard-to-interpret results if plotted directly (Zhu *et al.*, 2026). The fix, proposed by Zhu, Yang, Hussain and Qin (2026), is a simple logarithmic normalisation step applied immediately after acquisition:
 
+<div>
 $$P = \log\left(\frac{\Delta V}{\Delta V_{min}}\right)$$
+</div>
 
 where $\Delta V_{min}$ is the smallest observed value on the profile (set to 0.001 mV if the true minimum is zero, to avoid division by zero). This compresses the dynamic range, suppresses the loud anomalies, and boosts the weak ones, producing far more uniform contour spacing in the pseudo-section.
 

@@ -88,6 +88,8 @@ def layout(title, active, body, base="", description=None):
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="{esc(description)}" />
 <link rel="stylesheet" href="{base}assets/css/main.css?v={ASSET_VERSION}" />
+<script>window.MathJax={{tex:{{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]}},options:{{skipHtmlTags:['script','noscript','style','textarea','pre','code']}}}};</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 {nav_html(active, base)}
