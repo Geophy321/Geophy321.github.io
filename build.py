@@ -181,21 +181,12 @@ def home_page(posts, news):
   <p class="para">Yawar Hussain is a geophysicist specialising in near-surface geophysics and infrastructure
   hazard monitoring, with particular expertise in Distributed Fibre-Optic Sensing (DFOS) and passive seismic
   methods.</p>
-  <p class="para">With over several years of experience in applied and research geophysics, he has held postdoctoral
-  and research positions in Brazil, Belgium, Italy, and the United States. He currently works as a Specialist
-  in Infrastructure Hazard Monitoring at HydroResearch, Sweden, applying innovative geophysical techniques to
-  investigate geological processes and assess the stability and safety of natural and engineered
-  environments.</p>
-  <p class="para">His research and professional experience span a broad range of geohazard applications,
-  including:</p>
-  <ul class="plain-list">
-    <li>Archaeological and monumental structure stability</li>
-    <li>Rock slope instability</li>
-    <li>Karst and subsurface cavity investigations</li>
-    <li>Volcanic flank instability</li>
-    <li>Soil collapse and subsurface deformation</li>
-    <li>Groundwater dynamics and interactions with geological formations</li>
-  </ul>
+  <p class="para">With over 15 years of experience, he has held research and postdoctoral positions in Brazil,
+  Belgium, Italy, and the United States. He is currently a Specialist in Infrastructure Hazard Monitoring at
+  HydroResearch, Sweden.</p>
+  <p class="para">His work focuses on investigating geological instability and assessing the safety of natural and
+  engineered environments, including rock slopes, subsurface cavities, volcanic flanks, soil collapse,
+  archaeological structures, and groundwater dynamics.</p>
   <div class="center-cta"><a class="btn" href="files/cv.pdf" target="_blank" rel="noopener">CV {theme.ICON_CHEVRON}</a></div>
 </section>
 
