@@ -10,7 +10,6 @@ content/posts/YYYY-MM-DD-my-post.md, fill it in, run `python build.py` again
 (or just push — the GitHub Actions workflow does this for you, see README).
 No other file needs to change; the post appears on the Blog page automatically.
 """
-import html
 import re
 import shutil
 from pathlib import Path
@@ -23,7 +22,6 @@ ROOT = Path(__file__).parent
 OUT = ROOT / "dist"
 POSTS_DIR = ROOT / "content/posts"
 NEWS_DIR = ROOT / "content/news"
-SITE = "https://geophy321.github.io"
 
 
 def reading_time(body_html):
@@ -31,20 +29,6 @@ def reading_time(body_html):
     words = len(text.split())
     minutes = max(1, round(words / 200))
     return f"{minutes} min read"
-
-
-def with_og(page, item, section):
-    """Add Open Graph tags to <head> so LinkedIn and others show title, summary and cover."""
-    tags = {
-        "og:title": item["title"],
-        "og:description": item["summary"],
-        "og:type": "article",
-        "og:url": f"{SITE}/{section}/{item['slug']}/index.html",
-    }
-    if item["cover"]:
-        tags["og:image"] = f"{SITE}/{item['cover'].lstrip('/')}"
-    meta = "".join(f'<meta property="{k}" content="{html.escape(v)}">\n' for k, v in tags.items())
-    return page.replace("</head>", meta + "</head>", 1)
 
 
 def load_posts():
@@ -90,12 +74,12 @@ def load_news():
     return news
 
 
-def post_card(item, cover_prefix, href, index=0, animate=False):
+def post_card(item, cover_prefix, href, index=0, animate=False, extra_class=""):
     if item["cover"]:
         thumb = f'<div class="post-card-cover" style="background-image:url(\'{cover_prefix}{item["cover"]}\')"></div>'
     else:
         thumb = f'<div class="post-card-cover post-card-cover-empty">{theme.ICON_PEN}</div>'
-    cls = "post-card"
+    cls = "post-card" + (f" {extra_class}" if extra_class else "")
     style = ""
     if animate:
         # Cycle through 4 entry directions so consecutive articles feel varied:
@@ -166,11 +150,15 @@ def news_item_page(n):
 '''
 
 
-def recent_post_teaser(posts):
+def blog_teaser_rotator(posts):
     if not posts:
         return ""
-    p = posts[0]
-    return post_card(p, "", f'blog/{p["slug"]}/index.html')
+    cards = "".join(
+        post_card(p, "", f'blog/{p["slug"]}/index.html',
+                  extra_class="teaser-slide active" if i == 0 else "teaser-slide")
+        for i, p in enumerate(posts)
+    )
+    return f'<div class="blog-teaser-rotator">{cards}</div>'
 
 
 def home_page(posts, news):
@@ -190,12 +178,24 @@ def home_page(posts, news):
 
 <section>
   <h3 class="section-title">Work</h3>
-  <p class="para">Yawar is a geophysicist based in Stockholm with a background spanning near-surface
-  geophysics, seismic monitoring and geohazard characterisation, built over postdoctoral appointments in
-  Brazil, Belgium, Italy and the United States. He currently works as a Specialist in Infrastructure Hazard
-  Monitoring at HydroResearch Solutions AB, supporting fibre-optic monitoring (DTS, DSS, DAS) of dams and
-  embankments from field deployment through to interpretation. Over 35 peer-reviewed publications, an
-  H-index of 19 and 1284 citations (Scopus).</p>
+  <p class="para">Yawar Hussain is a geophysicist specialising in near-surface geophysics and infrastructure
+  hazard monitoring, with particular expertise in Distributed Fibre-Optic Sensing (DFOS) and passive seismic
+  methods.</p>
+  <p class="para">With over several years of experience in applied and research geophysics, he has held postdoctoral
+  and research positions in Brazil, Belgium, Italy, and the United States. He currently works as a Specialist
+  in Infrastructure Hazard Monitoring at HydroResearch, Sweden, applying innovative geophysical techniques to
+  investigate geological processes and assess the stability and safety of natural and engineered
+  environments.</p>
+  <p class="para">His research and professional experience span a broad range of geohazard applications,
+  including:</p>
+  <ul class="plain-list">
+    <li>Archaeological and monumental structure stability</li>
+    <li>Rock slope instability</li>
+    <li>Karst and subsurface cavity investigations</li>
+    <li>Volcanic flank instability</li>
+    <li>Soil collapse and subsurface deformation</li>
+    <li>Groundwater dynamics and interactions with geological formations</li>
+  </ul>
   <div class="center-cta"><a class="btn" href="files/cv.pdf" target="_blank" rel="noopener">CV {theme.ICON_CHEVRON}</a></div>
 </section>
 
@@ -212,7 +212,7 @@ def home_page(posts, news):
 
   <div class="grid-auto">{cards}</div>
 
-  {recent_post_teaser(posts)}
+  {blog_teaser_rotator(posts)}
 
   <h3 class="section-title">Get in touch</h3>
   <p>Happy to talk fibre-optic monitoring, near-surface geophysics, or postdoc/industry opportunities.</p>
@@ -353,16 +353,16 @@ def build():
     for n in news:
         page_dir = OUT / "news" / n["slug"]
         page_dir.mkdir(parents=True, exist_ok=True)
-        (page_dir / "index.html").write_text(with_og(
-            theme.layout(n["title"], "news/", news_item_page(n), base="../../", description=n["summary"] or None),
-            n, "news"))
+        (page_dir / "index.html").write_text(
+            theme.layout(n["title"], "news/", news_item_page(n), base="../../", description=n["summary"] or None)
+        )
 
     for p in posts:
         page_dir = OUT / "blog" / p["slug"]
         page_dir.mkdir(parents=True, exist_ok=True)
-        (page_dir / "index.html").write_text(with_og(
-            theme.layout(p["title"], "blog/", post_page(p), base="../../", description=p["summary"] or None),
-            p, "blog"))
+        (page_dir / "index.html").write_text(
+            theme.layout(p["title"], "blog/", post_page(p), base="../../", description=p["summary"] or None)
+        )
 
     print(f"built {len(posts)} post(s) -> {OUT}")
 
