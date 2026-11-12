@@ -189,11 +189,6 @@ def home_page(posts, news):
 </section>
 
 <section>
-  <h3 class="section-title">On the web</h3>
-  <ul class="link-list">
-    <li><a class="ghost-btn" href="mailto:yawar.pgn@gmail.com">{theme.ICON_MAIL} Contact</a></li>
-  </ul>
-
   <div class="grid-auto">{cards}</div>
 
   {blog_teaser_rotator(posts)}
