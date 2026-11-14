@@ -17,6 +17,10 @@ He also fired the final MASW shot of the campaign: he took his place at the sour
 
 <img src="../../images/collab-last-shot.jpeg" alt="The final shot of the survey, fired at the seismic source on the crest" style="width:80%;display:block;margin:12px auto;border-radius:4px;">
 
+With the survey finished, we drove back to Luleå and had lunch with our CEO, talking over what the campaign had produced and where it leaves us.
+
+<img src="../../images/collab-lunch.jpeg" alt="Lunch in Luleå with colleagues after the campaign" style="width:70%;display:block;margin:12px auto;border-radius:4px;">
+
 Afterwards we saw our partners off at Arlanda. Standing in the terminal, he said that the collaboration between us had passed to the next generation, and that he was glad of it.
 
 We are processing and discussing the campaign data now. The scope is widening beyond dams towards mining infrastructure monitoring, elsewhere in Sweden and internationally. The instruments have changed, the companies have changed, and the people have changed. The collaboration has not.
